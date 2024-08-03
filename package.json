@@ -1,6 +1,7 @@
 {
     "name": "jt-db-models",
     "version": "1.0.0",
+    "main": "dist/index.js",
     "scripts": {
       "start": "node dist/index.js",
       "build": "tsc",
