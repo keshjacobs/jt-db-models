@@ -1,0 +1,19 @@
+import mongoose, { Schema, Document } from 'mongoose';
+import { ICast } from './castModel';
+import { IUser } from './userModel';
+
+export interface IListener extends Document {
+    user: IUser,
+    cast: ICast,
+    date_created: string
+}
+
+const ListenersSchema: Schema = new Schema({
+    user: { type: Schema.Types.ObjectId, ref: 'Users' },
+    date_created: { type: Date, default: Date.now },
+    cast: { type: Schema.Types.ObjectId, ref: 'Casts' }
+});
+
+const CastListeners = mongoose.model<IListener>('CastListeners', ListenersSchema);
+
+export default CastListeners;
