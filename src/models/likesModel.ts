@@ -1,19 +1,27 @@
-import mongoose, { Schema, Document } from 'mongoose';
-import { ICast } from './castModel';
-import { IUser } from './userModel';
+import mongoose, { Schema, Document } from "mongoose";
+import { ICast } from "./castModel";
+import { IUser } from "./userModel";
 
 export interface ILike extends Document {
-    user: IUser,
-    cast: ICast,
-    date_created: string
+	user: IUser;
+	cast: ICast;
+	date_created: string;
 }
 
-const LikesSchema: Schema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'Users' },
-    date_created: { type: Date, default: Date.now },
-    cast: { type: Schema.Types.ObjectId, ref: 'Casts' }
-});
+const LikesSchema: Schema = new Schema(
+	{
+		user: { type: Schema.Types.ObjectId, ref: "Users" },
+		date_created: { type: Date, default: Date.now },
+		cast: { type: Schema.Types.ObjectId, ref: "Casts" },
+	},
+	{
+		timestamps: true, // Adds createdAt and updatedAt fields
+		usePushEach: true,
+	}
+);
 
-const CastLikes = mongoose.model<ILike>('CastLikes', LikesSchema);
+LikesSchema.set("toJSON", { virtuals: true });
+
+const CastLikes = mongoose.model<ILike>("CastLikes", LikesSchema);
 
 export default CastLikes;
