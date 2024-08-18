@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { Password } from "../lib/password";
 
 export interface IUser extends Document {
 	t_id: string;
