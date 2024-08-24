@@ -40,3 +40,8 @@ Thumbs.db
 *.wmv
 .env
 # /dump
+
+# Package manager lock files
+*.lock
+pnpm-lock.yaml
+package-lock.json
