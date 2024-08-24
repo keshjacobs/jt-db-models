@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { Password } from "../lib/password";
 
 export interface IUser extends Document {
 	t_id: string;
@@ -58,14 +57,6 @@ const UserSchema: Schema = new Schema(
 );
 
 UserSchema.set("toJSON", { virtuals: true });
-UserSchema.pre("save", async function (done) {
-	if (this.isModified("password")) {
-		const hashedPassword = await Password.toHash(this.get("password"));
-		this.set("password", hashedPassword);
-	}
-
-	done();
-});
 
 const User = mongoose.model<IUser>("User", UserSchema);
 
