@@ -22,7 +22,6 @@ const NotificationsSchema: Schema = new Schema(
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
-		usePushEach: true,
 	}
 );
 
