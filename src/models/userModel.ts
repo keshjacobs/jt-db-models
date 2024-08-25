@@ -34,7 +34,7 @@ const UserSchema: Schema = new Schema(
 		photo: { type: String, default: "photo/default.png" },
 		photo_header: { type: String, default: "photo/header.png" },
 		full_name: { type: String, required: true },
-		user_name: { type: String, required: true },
+		user_name: { type: String, required: true, unique: true },
 		email: { type: String, required: true, unique: true },
 		verified: { type: Boolean, default: false },
 		admin: { type: Boolean, default: false },
