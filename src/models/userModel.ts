@@ -18,7 +18,10 @@ export interface IUser extends Document {
 		long: number;
 	};
 	ratings: number;
-	email_code?: string;
+	email_code?: {
+		code: string;
+		expiresIn: string;
+	};
 	resetPasswordToken?: string;
 	resetPasswordExpires?: Date;
 	date_created: Date;
@@ -31,7 +34,7 @@ const UserSchema: Schema = new Schema(
 		photo: { type: String, default: "photo/default.png" },
 		photo_header: { type: String, default: "photo/header.png" },
 		full_name: { type: String, required: true },
-		user_name: { type: String, required: true },
+		user_name: { type: String, required: true, unique: true },
 		email: { type: String, required: true, unique: true },
 		verified: { type: Boolean, default: false },
 		admin: { type: Boolean, default: false },
@@ -44,7 +47,16 @@ const UserSchema: Schema = new Schema(
 			long: { type: Number, default: 0 },
 		},
 		ratings: { type: Number, default: 0 },
-		email_code: { type: String, default: undefined },
+		email_code: {
+			code: {
+				required: false,
+				type: String,
+			},
+			expiresIn: {
+				required: false,
+				type: Date,
+			},
+		},
 		resetPasswordToken: { type: String, select: false },
 		resetPasswordExpires: { type: Date, select: false },
 		date_created: { type: Date, default: Date.now },
@@ -52,7 +64,6 @@ const UserSchema: Schema = new Schema(
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
-		usePushEach: true,
 	}
 );
 

@@ -2,13 +2,13 @@ import mongoose, { Schema, Document } from "mongoose";
 import { ICast } from "./castModel";
 import { IUser } from "./userModel";
 
-export interface ILike extends Document {
+export interface IRecast extends Document {
 	user: IUser;
 	cast: ICast;
 	date_created: string;
 }
 
-const LikesSchema: Schema = new Schema(
+const RecastsSchema: Schema = new Schema(
 	{
 		user: { type: Schema.Types.ObjectId, ref: "User" },
 		date_created: { type: Date, default: Date.now },
@@ -19,8 +19,8 @@ const LikesSchema: Schema = new Schema(
 	}
 );
 
-LikesSchema.set("toJSON", { virtuals: true });
+RecastsSchema.set("toJSON", { virtuals: true });
 
-const CastLikes = mongoose.model<ILike>("CastLikes", LikesSchema);
+const CastRecasts = mongoose.model<IRecast>("CastRecasts", RecastsSchema);
 
-export default CastLikes;
+export default CastRecasts;
