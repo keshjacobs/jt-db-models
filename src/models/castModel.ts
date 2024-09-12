@@ -11,6 +11,7 @@ export interface ICast extends Document {
 	no_likes: number;
 	no_replies: number;
 	no_recasts: number;
+	no_listeners: number;
 	filter: {
 		name: string;
 		gain: number;
@@ -35,6 +36,10 @@ const CastSchema: Schema = new Schema(
 		ratings: { type: Number, default: 0 },
 		duration: { type: Number, default: 0 },
 		date_created: { type: Date, default: Date.now },
+		no_likes: { type: Number, default: 0 },
+		no_replies: { type: Number, default: 0 },
+		no_recasts: { type: Number, default: 0 },
+		no_listeners: { type: Number, default: 0 },
 		filter: {
 			name: { type: String, default: "normal" },
 			gain: { type: Number, default: 2 },
@@ -45,8 +50,9 @@ const CastSchema: Schema = new Schema(
 		},
 		recast: { type: Schema.Types.ObjectId, ref: "Casts" },
 		reply: { type: Schema.Types.ObjectId, ref: "Casts" },
-		caster: { type: Schema.Types.ObjectId, ref: "Users" },
-		mentions: [{ type: Schema.Types.ObjectId, ref: "Users" }],
+		caster: { type: Schema.Types.ObjectId, ref: "User" },
+		recaster: { type: Schema.Types.ObjectId, ref: "User" },
+		mentions: [{ type: Schema.Types.ObjectId, ref: "User" }],
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields

@@ -10,7 +10,7 @@ export interface IListener extends Document {
 
 const ListenersSchema: Schema = new Schema(
 	{
-		user: { type: Schema.Types.ObjectId, ref: "Users" },
+		user: { type: Schema.Types.ObjectId, ref: "User" },
 		date_created: { type: Date, default: Date.now },
 		cast: { type: Schema.Types.ObjectId, ref: "Casts" },
 	},

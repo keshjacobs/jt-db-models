@@ -9,8 +9,8 @@ export interface ISubscription extends Document {
 
 const SubscriptionSchema: Schema = new Schema(
 	{
-		user: { type: Schema.Types.ObjectId, ref: "Users" },
-		subscriber: { type: Schema.Types.ObjectId, ref: "Users" },
+		user: { type: Schema.Types.ObjectId, ref: "User" },
+		subscriber: { type: Schema.Types.ObjectId, ref: "User" },
 		date_created: { type: Date, default: Date.now },
 	},
 	{
