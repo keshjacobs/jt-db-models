@@ -24,31 +24,34 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const CastSchema = new mongoose_1.Schema({
-    t_id: { type: String },
-    title: { type: String },
-    cast: { type: String },
-    streams: { type: Number, default: 0 },
-    music: { type: String },
-    ratings: { type: Number, default: 0 },
-    duration: { type: Number, default: 0 },
-    date_created: { type: Date, default: Date.now },
-    filter: {
-        name: { type: String, default: "normal" },
-        gain: { type: Number, default: 2 },
-        type: { type: String, default: "lowshelf" },
-        frequency: { type: Number, default: 3150 },
-        detune: { type: Number, default: 0 },
-        pitch: { type: Number, default: 1 },
-    },
-    recast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
-    reply: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
-    caster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
+const ChatSchema = new mongoose_1.Schema({
+    title: { type: String, default: "Group" },
+    photo: { type: String },
+    members: [
+        {
+            user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+            admin: { type: Boolean },
+            accepted: { type: Boolean },
+        },
+    ],
+    conversations: [
+        {
+            user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+            cast: { type: String },
+            cast_id: { type: String },
+            played: { type: Boolean, default: false },
+            duration: { type: Number, default: 0 },
+            listens: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "CastListeners" }],
+            expired: { type: Boolean, default: false },
+            date_created: { type: Date, default: Date.now },
+            date_expired: { type: Date },
+        },
+    ],
+    last_modified: { type: Date, default: Date.now },
 }, {
     timestamps: true,
     usePushEach: true,
 });
-CastSchema.set("toJSON", { virtuals: true });
-const Cast = mongoose_1.default.model("Casts", CastSchema);
-exports.default = Cast;
+ChatSchema.set("toJSON", { virtuals: true });
+const Chat = mongoose_1.default.model("Chats", ChatSchema);
+exports.default = Chat;

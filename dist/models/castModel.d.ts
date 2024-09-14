@@ -1,5 +1,5 @@
-import mongoose, { Document } from 'mongoose';
-interface ICast extends Document {
+import mongoose, { Document } from "mongoose";
+export interface ICast extends Document {
     title: string;
     cast: string;
     streams: number;

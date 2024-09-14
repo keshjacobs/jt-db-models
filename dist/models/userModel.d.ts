@@ -1,5 +1,5 @@
-import mongoose, { Document } from 'mongoose';
-interface IUser extends Document {
+import mongoose, { Document } from "mongoose";
+export interface IUser extends Document {
     t_id: string;
     photo: string;
     photo_header: string;

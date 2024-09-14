@@ -39,7 +39,7 @@ const UserSchema = new mongoose_1.Schema({
     pushtoken: { type: String, default: "000" },
     coord: {
         lat: { type: Number, default: 0 },
-        long: { type: Number, default: 0 }
+        long: { type: Number, default: 0 },
     },
     ratings: { type: Number, default: 0 },
     email_code: { type: String, default: undefined },
@@ -49,7 +49,8 @@ const UserSchema = new mongoose_1.Schema({
     status: { type: Number, default: 1 },
 }, {
     timestamps: true,
-    usePushEach: true
+    usePushEach: true,
 });
-const User = mongoose_1.default.model('User', UserSchema);
+UserSchema.set("toJSON", { virtuals: true });
+const User = mongoose_1.default.model("User", UserSchema);
 exports.default = User;

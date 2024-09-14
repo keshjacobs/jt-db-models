@@ -24,31 +24,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const CastSchema = new mongoose_1.Schema({
-    t_id: { type: String },
+const NotificationsSchema = new mongoose_1.Schema({
     title: { type: String },
-    cast: { type: String },
-    streams: { type: Number, default: 0 },
-    music: { type: String },
-    ratings: { type: Number, default: 0 },
-    duration: { type: Number, default: 0 },
+    message: { type: String },
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
+    subscription: { type: Boolean, default: false },
     date_created: { type: Date, default: Date.now },
-    filter: {
-        name: { type: String, default: "normal" },
-        gain: { type: Number, default: 2 },
-        type: { type: String, default: "lowshelf" },
-        frequency: { type: Number, default: 3150 },
-        detune: { type: Number, default: 0 },
-        pitch: { type: Number, default: 1 },
-    },
-    recast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
-    reply: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
-    caster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
 }, {
     timestamps: true,
     usePushEach: true,
 });
-CastSchema.set("toJSON", { virtuals: true });
-const Cast = mongoose_1.default.model("Casts", CastSchema);
-exports.default = Cast;
+NotificationsSchema.set("toJSON", { virtuals: true });
+const Notifications = mongoose_1.default.model("Notes", NotificationsSchema);
+exports.default = Notifications;
