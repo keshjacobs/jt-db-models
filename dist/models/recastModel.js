@@ -24,16 +24,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const NotificationsSchema = new mongoose_1.Schema({
-    title: { type: String },
-    message: { type: String },
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
-    subscription: { type: Boolean, default: false },
+const RecastsSchema = new mongoose_1.Schema({
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
     date_created: { type: Date, default: Date.now },
+    cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
-NotificationsSchema.set("toJSON", { virtuals: true });
-const Notifications = mongoose_1.default.model("Notes", NotificationsSchema);
-exports.default = Notifications;
+RecastsSchema.set("toJSON", { virtuals: true });
+const CastRecasts = mongoose_1.default.model("CastRecasts", RecastsSchema);
+exports.default = CastRecasts;

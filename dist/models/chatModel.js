@@ -49,8 +49,7 @@ const ChatSchema = new mongoose_1.Schema({
     ],
     last_modified: { type: Date, default: Date.now },
 }, {
-    timestamps: true,
-    usePushEach: true,
+    timestamps: true, // Adds createdAt and updatedAt fields
 });
 ChatSchema.set("toJSON", { virtuals: true });
 const Chat = mongoose_1.default.model("Chats", ChatSchema);

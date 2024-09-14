@@ -25,12 +25,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const LikesSchema = new mongoose_1.Schema({
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
     date_created: { type: Date, default: Date.now },
     cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
 }, {
-    timestamps: true,
-    usePushEach: true,
+    timestamps: true, // Adds createdAt and updatedAt fields
 });
 LikesSchema.set("toJSON", { virtuals: true });
 const CastLikes = mongoose_1.default.model("CastLikes", LikesSchema);

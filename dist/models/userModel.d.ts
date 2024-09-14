@@ -17,7 +17,10 @@ export interface IUser extends Document {
         long: number;
     };
     ratings: number;
-    email_code?: string;
+    email_code?: {
+        code: string;
+        expiresIn: string;
+    };
     resetPasswordToken?: string;
     resetPasswordExpires?: Date;
     date_created: Date;

@@ -10,6 +10,7 @@ export interface ICast extends Document {
     no_likes: number;
     no_replies: number;
     no_recasts: number;
+    no_listeners: number;
     filter: {
         name: string;
         gain: number;

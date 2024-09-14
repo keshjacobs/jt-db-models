@@ -33,6 +33,10 @@ const CastSchema = new mongoose_1.Schema({
     ratings: { type: Number, default: 0 },
     duration: { type: Number, default: 0 },
     date_created: { type: Date, default: Date.now },
+    no_likes: { type: Number, default: 0 },
+    no_replies: { type: Number, default: 0 },
+    no_recasts: { type: Number, default: 0 },
+    no_listeners: { type: Number, default: 0 },
     filter: {
         name: { type: String, default: "normal" },
         gain: { type: Number, default: 2 },
@@ -43,11 +47,11 @@ const CastSchema = new mongoose_1.Schema({
     },
     recast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
     reply: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
-    caster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
+    caster: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
+    recaster: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
+    mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "User" }],
 }, {
-    timestamps: true,
-    usePushEach: true,
+    timestamps: true, // Adds createdAt and updatedAt fields
 });
 CastSchema.set("toJSON", { virtuals: true });
 const Cast = mongoose_1.default.model("Casts", CastSchema);
