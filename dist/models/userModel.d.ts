@@ -17,14 +17,16 @@ export interface IUser extends Document {
         long: number;
     };
     ratings: number;
-    email_code?: {
-        code: string;
-        expiresIn: string;
+    email_code: {
+        code?: string;
+        expiresIn?: string;
     };
     resetPasswordToken?: string;
     resetPasswordExpires?: Date;
     date_created: Date;
     status: number;
 }
-declare const User: mongoose.Model<IUser, {}, {}>;
+declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser> & IUser & Required<{
+    _id: unknown;
+}>, any>;
 export default User;

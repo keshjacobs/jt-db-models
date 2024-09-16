@@ -6,5 +6,7 @@ export interface IRecast extends Document {
     cast: ICast;
     date_created: string;
 }
-declare const CastRecasts: mongoose.Model<IRecast, {}, {}>;
+declare const CastRecasts: mongoose.Model<IRecast, {}, {}, {}, mongoose.Document<unknown, {}, IRecast> & IRecast & Required<{
+    _id: unknown;
+}>, any>;
 export default CastRecasts;

@@ -6,5 +6,7 @@ export interface ILike extends Document {
     cast: ICast;
     date_created: string;
 }
-declare const CastLikes: mongoose.Model<ILike, {}, {}>;
+declare const CastLikes: mongoose.Model<ILike, {}, {}, {}, mongoose.Document<unknown, {}, ILike> & ILike & Required<{
+    _id: unknown;
+}>, any>;
 export default CastLikes;

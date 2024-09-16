@@ -9,5 +9,7 @@ export interface INotification extends Document {
     subscription: boolean;
     date_created: string;
 }
-declare const Notifications: mongoose.Model<INotification, {}, {}>;
+declare const Notifications: mongoose.Model<INotification, {}, {}, {}, mongoose.Document<unknown, {}, INotification> & INotification & Required<{
+    _id: unknown;
+}>, any>;
 export default Notifications;

@@ -6,5 +6,7 @@ export interface IListener extends Document {
     cast: ICast;
     date_created: string;
 }
-declare const CastListeners: mongoose.Model<IListener, {}, {}>;
+declare const CastListeners: mongoose.Model<IListener, {}, {}, {}, mongoose.Document<unknown, {}, IListener> & IListener & Required<{
+    _id: unknown;
+}>, any>;
 export default CastListeners;
