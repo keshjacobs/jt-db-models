@@ -23,6 +23,7 @@ export interface ICast extends Document {
 	recast: ICast;
 	reply: ICast;
 	caster: any;
+	recaster: any;
 	mentions: any[];
 }
 
@@ -50,9 +51,9 @@ const CastSchema: Schema = new Schema(
 		},
 		recast: { type: Schema.Types.ObjectId, ref: "Casts" },
 		reply: { type: Schema.Types.ObjectId, ref: "Casts" },
-		caster: { type: Schema.Types.ObjectId, ref: "User" },
-		recaster: { type: Schema.Types.ObjectId, ref: "User" },
-		mentions: [{ type: Schema.Types.ObjectId, ref: "User" }],
+		caster: { type: Schema.Types.ObjectId, ref: "Users" },
+		recaster: { type: Schema.Types.ObjectId, ref: "Users" },
+		mentions: [{ type: Schema.Types.ObjectId, ref: "Users" }],
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
