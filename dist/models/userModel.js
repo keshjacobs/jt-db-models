@@ -60,5 +60,5 @@ const UserSchema = new mongoose_1.Schema({
     timestamps: true, // Adds createdAt and updatedAt fields
 });
 UserSchema.set("toJSON", { virtuals: true });
-const User = mongoose_1.default.model("User", UserSchema);
+const User = mongoose_1.default.model("Users", UserSchema);
 exports.default = User;

@@ -2,16 +2,14 @@ import mongoose, { Schema, Document } from "mongoose";
 import { ICast } from "./castModel";
 import { IUser } from "./userModel";
 
-export interface IRecast extends Document {
+export interface IBlacklistedCast extends Document {
 	user: IUser;
 	cast: ICast;
-	date_created: string;
 }
 
-const RecastsSchema: Schema = new Schema(
+const BlacklistedCastsSchema: Schema = new Schema(
 	{
 		user: { type: Schema.Types.ObjectId, ref: "Users" },
-		date_created: { type: Date, default: Date.now },
 		cast: { type: Schema.Types.ObjectId, ref: "Casts" },
 	},
 	{
@@ -19,8 +17,11 @@ const RecastsSchema: Schema = new Schema(
 	}
 );
 
-RecastsSchema.set("toJSON", { virtuals: true });
+BlacklistedCastsSchema.set("toJSON", { virtuals: true });
 
-const CastRecasts = mongoose.model<IRecast>("CastRecasts", RecastsSchema);
+const BlacklistedCasts = mongoose.model<IBlacklistedCast>(
+	"BlacklistedCasts",
+	BlacklistedCastsSchema
+);
 
-export default CastRecasts;
+export default BlacklistedCasts;

@@ -25,8 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const SubscriptionSchema = new mongoose_1.Schema({
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
-    subscriber: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    subscriber: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     date_created: { type: Date, default: Date.now },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields

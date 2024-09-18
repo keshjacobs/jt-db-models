@@ -22,6 +22,7 @@ export interface ICast extends Document {
     recast: ICast;
     reply: ICast;
     caster: any;
+    recaster: any;
     mentions: any[];
 }
 declare const Cast: mongoose.Model<ICast, {}, {}, {}, mongoose.Document<unknown, {}, ICast> & ICast & Required<{

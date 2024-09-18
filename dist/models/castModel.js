@@ -47,9 +47,9 @@ const CastSchema = new mongoose_1.Schema({
     },
     recast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
     reply: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
-    caster: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
-    recaster: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
-    mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "User" }],
+    caster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    recaster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
