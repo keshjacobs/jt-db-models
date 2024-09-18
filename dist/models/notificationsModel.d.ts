@@ -1,7 +1,7 @@
 import mongoose, { Document } from "mongoose";
 import { IUser } from "./userModel";
 import { ICast } from "./castModel";
-interface INotification extends Document {
+export interface INotification extends Document {
     title: string;
     message: string;
     cast: ICast;
