@@ -1,5 +1,5 @@
-import mongoose, { Document } from 'mongoose';
-interface ICast extends Document {
+import mongoose, { Document } from "mongoose";
+export interface ICast extends Document {
     title: string;
     cast: string;
     streams: number;
@@ -10,6 +10,7 @@ interface ICast extends Document {
     no_likes: number;
     no_replies: number;
     no_recasts: number;
+    no_listeners: number;
     filter: {
         name: string;
         gain: number;
@@ -21,7 +22,10 @@ interface ICast extends Document {
     recast: ICast;
     reply: ICast;
     caster: any;
+    recaster: any;
     mentions: any[];
 }
-declare const Cast: mongoose.Model<ICast, {}, {}>;
+declare const Cast: mongoose.Model<ICast, {}, {}, {}, mongoose.Document<unknown, {}, ICast> & ICast & Required<{
+    _id: unknown;
+}>, any>;
 export default Cast;

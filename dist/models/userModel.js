@@ -29,7 +29,7 @@ const UserSchema = new mongoose_1.Schema({
     photo: { type: String, default: "photo/default.png" },
     photo_header: { type: String, default: "photo/header.png" },
     full_name: { type: String, required: true },
-    user_name: { type: String, required: true },
+    user_name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     verified: { type: Boolean, default: false },
     admin: { type: Boolean, default: false },
@@ -39,17 +39,26 @@ const UserSchema = new mongoose_1.Schema({
     pushtoken: { type: String, default: "000" },
     coord: {
         lat: { type: Number, default: 0 },
-        long: { type: Number, default: 0 }
+        long: { type: Number, default: 0 },
     },
     ratings: { type: Number, default: 0 },
-    email_code: { type: String, default: undefined },
+    email_code: {
+        code: {
+            required: false,
+            type: String,
+        },
+        expiresIn: {
+            required: false,
+            type: Date,
+        },
+    },
     resetPasswordToken: { type: String, select: false },
     resetPasswordExpires: { type: Date, select: false },
     date_created: { type: Date, default: Date.now },
     status: { type: Number, default: 1 },
 }, {
-    timestamps: true,
-    usePushEach: true
+    timestamps: true, // Adds createdAt and updatedAt fields
 });
-const User = mongoose_1.default.model('User', UserSchema);
+UserSchema.set("toJSON", { virtuals: true });
+const User = mongoose_1.default.model("Users", UserSchema);
 exports.default = User;

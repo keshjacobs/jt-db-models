@@ -24,13 +24,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const ListenersSchema = new mongoose_1.Schema({
+const BlacklistedCastsSchema = new mongoose_1.Schema({
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    date_created: { type: Date, default: Date.now },
     cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
-ListenersSchema.set("toJSON", { virtuals: true });
-const CastListeners = mongoose_1.default.model("CastListeners", ListenersSchema);
-exports.default = CastListeners;
+BlacklistedCastsSchema.set("toJSON", { virtuals: true });
+const BlacklistedCasts = mongoose_1.default.model("BlacklistedCasts", BlacklistedCastsSchema);
+exports.default = BlacklistedCasts;
