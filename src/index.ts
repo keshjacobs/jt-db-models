@@ -6,6 +6,8 @@ export { default as CastListeners } from "./models/listenersModel";
 export { default as Chat } from "./models/chatModel";
 export { default as Subscriptions } from "./models/subscriptionModel";
 export { default as BlacklistedCasts } from "./models/blacklistedCastModel";
+export { default as UserDevices } from "./models/deviceModel";
+export { default as UserReports } from "./models/reportsModel";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -16,3 +18,5 @@ export { INotification } from "./models/notificationsModel";
 export { IListener } from "./models/listenersModel";
 export { IChat } from "./models/chatModel";
 export { IBlacklistedCast } from "./models/blacklistedCastModel";
+export { IUserDevice } from "./models/deviceModel";
+export { IUserReport } from "./models/reportsModel";

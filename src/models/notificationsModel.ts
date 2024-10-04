@@ -7,7 +7,7 @@ export interface INotification extends Document {
 	message: string;
 	cast: ICast;
 	user: IUser;
-	subscription: boolean;
+	subscriber: IUser;
 	date_created: string;
 }
 
@@ -17,7 +17,7 @@ const NotificationsSchema: Schema = new Schema(
 		message: { type: String },
 		user: { type: Schema.Types.ObjectId, ref: "Users" },
 		cast: { type: Schema.Types.ObjectId, ref: "Casts" },
-		subscription: { type: Boolean, default: false },
+		subscriber: { type: Schema.Types.ObjectId, ref: "Users" },
 		date_created: { type: Date, default: Date.now },
 	},
 	{
@@ -28,7 +28,7 @@ const NotificationsSchema: Schema = new Schema(
 NotificationsSchema.set("toJSON", { virtuals: true });
 
 const Notifications = mongoose.model<INotification>(
-	"Notes",
+	"Notifications",
 	NotificationsSchema
 );
 
