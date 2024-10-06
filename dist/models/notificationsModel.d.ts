@@ -6,7 +6,7 @@ export interface INotification extends Document {
     message: string;
     cast: ICast;
     user: IUser;
-    subscription: boolean;
+    subscriber: IUser;
     date_created: string;
 }
 declare const Notifications: mongoose.Model<INotification, {}, {}, {}, mongoose.Document<unknown, {}, INotification> & INotification & Required<{
