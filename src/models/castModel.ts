@@ -53,7 +53,7 @@ const CastSchema: Schema = new Schema(
 		reply: { type: Schema.Types.ObjectId, ref: "Casts" },
 		caster: { type: Schema.Types.ObjectId, ref: "Users" },
 		recaster: { type: Schema.Types.ObjectId, ref: "Users" },
-		mentions: [{ type: Schema.Types.ObjectId, ref: "Users" }],
+		mentions: [{ type: Schema.Types.ObjectId, ref: "Users", default: [] }],
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
