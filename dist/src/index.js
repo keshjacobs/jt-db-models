@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
+exports.UserReports = exports.UserDevices = exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
 var userModel_1 = require("./models/userModel");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return __importDefault(userModel_1).default; } });
 var castModel_1 = require("./models/castModel");
@@ -20,3 +20,7 @@ var subscriptionModel_1 = require("./models/subscriptionModel");
 Object.defineProperty(exports, "Subscriptions", { enumerable: true, get: function () { return __importDefault(subscriptionModel_1).default; } });
 var blacklistedCastModel_1 = require("./models/blacklistedCastModel");
 Object.defineProperty(exports, "BlacklistedCasts", { enumerable: true, get: function () { return __importDefault(blacklistedCastModel_1).default; } });
+var deviceModel_1 = require("./models/deviceModel");
+Object.defineProperty(exports, "UserDevices", { enumerable: true, get: function () { return __importDefault(deviceModel_1).default; } });
+var reportsModel_1 = require("./models/reportsModel");
+Object.defineProperty(exports, "UserReports", { enumerable: true, get: function () { return __importDefault(reportsModel_1).default; } });

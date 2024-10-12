@@ -7,7 +7,7 @@ export interface INotification extends Document {
     message: string;
     cast: ICast;
     user: IUser;
-    subscription: boolean;
+    subscriber: IUser;
     event: NotificationEvents;
     date_created: string;
 }
