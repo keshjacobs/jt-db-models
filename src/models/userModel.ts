@@ -69,6 +69,6 @@ const UserSchema: Schema = new Schema(
 
 UserSchema.set("toJSON", { virtuals: true });
 
-const User = mongoose.model<IUser>("User", UserSchema);
+const User = mongoose.model<IUser>("Users", UserSchema);
 
 export default User;

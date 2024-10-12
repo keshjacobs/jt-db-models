@@ -28,5 +28,7 @@ export interface IUser extends Document {
 }
 declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser> & IUser & Required<{
     _id: unknown;
-}>, any>;
+}> & {
+    __v?: number;
+}, any>;
 export default User;

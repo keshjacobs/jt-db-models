@@ -24,13 +24,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const ListenersSchema = new mongoose_1.Schema({
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    date_created: { type: Date, default: Date.now },
-    cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
+const UserReportSchema = new mongoose_1.Schema({
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users", required: true },
+    reasons: { type: [String], required: true }, // Array of reasons
+    case: { type: mongoose_1.Schema.Types.ObjectId, required: true, refPath: "caseModel" }, // Dynamic reference
+    caseModel: { type: String, required: true, enum: ["Casts", "Users"] }, // Will define the model used in the ref
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
-ListenersSchema.set("toJSON", { virtuals: true });
-const CastListeners = mongoose_1.default.model("CastListeners", ListenersSchema);
-exports.default = CastListeners;
+UserReportSchema.set("toJSON", { virtuals: true });
+const UserReports = mongoose_1.default.model("UserReports", UserReportSchema);
+exports.default = UserReports;
