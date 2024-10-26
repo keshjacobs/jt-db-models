@@ -10,6 +10,7 @@ export interface INotification extends Document {
 	user: IUser;
 	subscriber: IUser;
 	event: NotificationEvents;
+	hasBeenRead?: boolean;
 	date_created: string;
 }
 
@@ -21,6 +22,7 @@ const NotificationsSchema: Schema = new Schema(
 		cast: { type: Schema.Types.ObjectId, ref: "Casts" },
 		subscriber: { type: Schema.Types.ObjectId, ref: "Users" },
 		event: { type: String, enum: NotificationEvents },
+		hasBeenRead: { type: Boolean, required: false, default: false },
 		date_created: { type: Date, default: Date.now },
 	},
 	{

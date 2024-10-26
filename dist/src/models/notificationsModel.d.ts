@@ -9,6 +9,7 @@ export interface INotification extends Document {
     user: IUser;
     subscriber: IUser;
     event: NotificationEvents;
+    hasBeenRead?: boolean;
     date_created: string;
 }
 declare const Notifications: mongoose.Model<INotification, {}, {}, {}, mongoose.Document<unknown, {}, INotification> & INotification & Required<{
