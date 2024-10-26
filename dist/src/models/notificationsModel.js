@@ -32,6 +32,7 @@ const NotificationsSchema = new mongoose_1.Schema({
     cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
     subscriber: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     event: { type: String, enum: notification_1.NotificationEvents },
+    hasBeenRead: { type: Boolean, required: false, default: false },
     date_created: { type: Date, default: Date.now },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
