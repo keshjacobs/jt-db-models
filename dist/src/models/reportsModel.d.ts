@@ -10,6 +10,6 @@ export interface IUserReport extends Document {
 declare const UserReports: mongoose.Model<IUserReport, {}, {}, {}, mongoose.Document<unknown, {}, IUserReport> & IUserReport & Required<{
     _id: unknown;
 }> & {
-    __v: number;
+    __v?: number;
 }, any>;
 export default UserReports;
