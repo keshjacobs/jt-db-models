@@ -8,6 +8,6 @@ export interface ISubscription extends Document {
 declare const Subscriptions: mongoose.Model<ISubscription, {}, {}, {}, mongoose.Document<unknown, {}, ISubscription> & ISubscription & Required<{
     _id: unknown;
 }> & {
-    __v?: number;
+    __v: number;
 }, any>;
 export default Subscriptions;

@@ -31,6 +31,8 @@ const BlockedUsersSchema = new mongoose_1.Schema({
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
+// Add index to optimize lookups
+BlockedUsersSchema.index({ user: 1, blockedUser: 1 });
 BlockedUsersSchema.set("toJSON", { virtuals: true });
 const BlockedUsers = mongoose_1.default.model("BlockedUsers", BlockedUsersSchema);
 exports.default = BlockedUsers;
