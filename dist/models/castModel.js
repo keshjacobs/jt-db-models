@@ -53,6 +53,8 @@ const CastSchema = new mongoose_1.Schema({
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
+// Add index to optimize lookups
+CastSchema.index({ createdAt: 1 });
 CastSchema.set("toJSON", { virtuals: true });
 const Cast = mongoose_1.default.model("Casts", CastSchema);
 exports.default = Cast;

@@ -60,6 +60,9 @@ const CastSchema: Schema = new Schema(
 	}
 );
 
+// Add index to optimize lookups
+CastSchema.index({ createdAt: 1 });
+
 CastSchema.set("toJSON", { virtuals: true });
 
 const Cast = mongoose.model<ICast>("Casts", CastSchema);
