@@ -11,8 +11,12 @@ export interface IBadge extends Document {
 const BadgesSchema: Schema = new Schema(
 	{
 		user: { type: Schema.Types.ObjectId, ref: "Users" },
-		points: { type: Number, default: BadgePoints.base },
-		level: { type: String, enum: BadgeLevels, default: BadgeLevels.base },
+		pointsBeforeClick: { type: Number, default: BadgePoints.base },
+		levelBeforeClick: {
+			type: String,
+			enum: BadgeLevels,
+			default: BadgeLevels.base,
+		},
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
