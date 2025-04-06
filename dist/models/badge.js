@@ -24,13 +24,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const RecastsSchema = new mongoose_1.Schema({
+const badge_1 = require("../enums/badge");
+const BadgesSchema = new mongoose_1.Schema({
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    date_created: { type: Date, default: Date.now },
-    cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
+    pointsBeforeClick: { type: Number, default: badge_1.BadgePoints.base },
+    levelBeforeClick: {
+        type: String,
+        enum: badge_1.BadgeLevels,
+        default: badge_1.BadgeLevels.base,
+    },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
-RecastsSchema.set("toJSON", { virtuals: true });
-const CastRecasts = mongoose_1.default.model("CastRecasts", RecastsSchema);
-exports.default = CastRecasts;
+BadgesSchema.set("toJSON", { virtuals: true });
+const Badges = mongoose_1.default.model("Badges", BadgesSchema);
+exports.default = Badges;

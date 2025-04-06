@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { BadgeLevels } from "../enums/badge";
 
 export interface IUser extends Document {
 	t_id: string;
@@ -21,6 +22,10 @@ export interface IUser extends Document {
 	email_code?: {
 		code: string;
 		expiresIn: string;
+	};
+	badge?: {
+		level: string;
+		points: number;
 	};
 	resetPasswordToken?: string;
 	resetPasswordExpires?: Date;
@@ -57,8 +62,19 @@ const UserSchema: Schema = new Schema(
 				type: Date,
 			},
 		},
-		resetPasswordToken: { type: String, select: false },
-		resetPasswordExpires: { type: Date, select: false },
+		badge: {
+			level: {
+				required: false,
+				enum: BadgeLevels,
+				type: String,
+			},
+			points: {
+				required: false,
+				type: Number,
+			},
+		},
+		resetPasswordToken: { type: String },
+		resetPasswordExpires: { type: Date },
 		date_created: { type: Date, default: Date.now },
 		status: { type: Number, default: 1 },
 	},

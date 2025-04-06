@@ -28,5 +28,7 @@ export interface IChat extends Document {
 }
 declare const Chat: mongoose.Model<IChat, {}, {}, {}, mongoose.Document<unknown, {}, IChat> & IChat & Required<{
     _id: unknown;
-}>, any>;
+}> & {
+    __v?: number;
+}, any>;
 export default Chat;

@@ -10,7 +10,7 @@ export interface INotification extends Document {
 	user: IUser;
 	subscriber: IUser;
 	event: NotificationEvents;
-	hasBeenRead?: boolean;
+	hasBeenRead: boolean;
 	date_created: string;
 }
 

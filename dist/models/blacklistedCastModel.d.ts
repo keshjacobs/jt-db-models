@@ -7,5 +7,7 @@ export interface IBlacklistedCast extends Document {
 }
 declare const BlacklistedCasts: mongoose.Model<IBlacklistedCast, {}, {}, {}, mongoose.Document<unknown, {}, IBlacklistedCast> & IBlacklistedCast & Required<{
     _id: unknown;
-}>, any>;
+}> & {
+    __v?: number;
+}, any>;
 export default BlacklistedCasts;

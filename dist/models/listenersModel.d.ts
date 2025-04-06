@@ -8,5 +8,7 @@ export interface IListener extends Document {
 }
 declare const CastListeners: mongoose.Model<IListener, {}, {}, {}, mongoose.Document<unknown, {}, IListener> & IListener & Required<{
     _id: unknown;
-}>, any>;
+}> & {
+    __v?: number;
+}, any>;
 export default CastListeners;

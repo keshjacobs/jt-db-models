@@ -24,13 +24,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const RecastsSchema = new mongoose_1.Schema({
+const BlockedUsersSchema = new mongoose_1.Schema({
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-    date_created: { type: Date, default: Date.now },
-    cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
+    blockedUser: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    reason: { required: false, type: String },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
-RecastsSchema.set("toJSON", { virtuals: true });
-const CastRecasts = mongoose_1.default.model("CastRecasts", RecastsSchema);
-exports.default = CastRecasts;
+BlockedUsersSchema.set("toJSON", { virtuals: true });
+const BlockedUsers = mongoose_1.default.model("BlockedUsers", BlockedUsersSchema);
+exports.default = BlockedUsers;

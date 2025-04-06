@@ -9,5 +9,7 @@ export interface IUserDevice {
 }
 declare const UserDevices: import("mongoose").Model<IUserDevice, {}, {}, {}, import("mongoose").Document<unknown, {}, IUserDevice> & IUserDevice & {
     _id: Types.ObjectId;
+} & {
+    __v?: number;
 }, any>;
 export default UserDevices;

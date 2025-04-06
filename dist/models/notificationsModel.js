@@ -24,12 +24,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
+const notification_1 = require("../enums/notification");
 const NotificationsSchema = new mongoose_1.Schema({
     title: { type: String },
     message: { type: String },
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
     subscriber: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    event: { type: String, enum: notification_1.NotificationEvents },
+    hasBeenRead: { type: Boolean, required: false, default: false },
     date_created: { type: Date, default: Date.now },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
