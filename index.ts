@@ -9,6 +9,7 @@ export { default as BlacklistedCasts } from "./models/blacklistedCastModel";
 export { default as UserDevices } from "./models/deviceModel";
 export { default as UserReports } from "./models/reportsModel";
 export { default as BlockedUsers } from "./models/blockedUserModel";
+export { default as Badge } from "./models/badge";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -22,3 +23,4 @@ export { IBlacklistedCast } from "./models/blacklistedCastModel";
 export { IUserDevice } from "./models/deviceModel";
 export { IUserReport } from "./models/reportsModel";
 export { IBlockedUser } from "./models/blockedUserModel";
+export { IBadge } from "./models/badge";
