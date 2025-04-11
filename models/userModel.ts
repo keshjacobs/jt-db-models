@@ -26,6 +26,7 @@ export interface IUser extends Document {
 	badge?: {
 		level: string;
 		points: number;
+		dateOfLastClick: Date;
 	};
 	resetPasswordToken?: string;
 	resetPasswordExpires?: Date;
@@ -71,6 +72,10 @@ const UserSchema: Schema = new Schema(
 			points: {
 				required: false,
 				type: Number,
+			},
+			dateOfLastClick: {
+				required: false,
+				type: Date,
 			},
 		},
 		resetPasswordToken: { type: String },

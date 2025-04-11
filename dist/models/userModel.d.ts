@@ -24,6 +24,7 @@ export interface IUser extends Document {
     badge?: {
         level: string;
         points: number;
+        dateOfLastClick: Date;
     };
     resetPasswordToken?: string;
     resetPasswordExpires?: Date;

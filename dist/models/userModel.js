@@ -63,6 +63,10 @@ const UserSchema = new mongoose_1.Schema({
             required: false,
             type: Number,
         },
+        dateOfLastClick: {
+            required: false,
+            type: Date,
+        },
     },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
