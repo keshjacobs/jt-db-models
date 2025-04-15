@@ -23,11 +23,11 @@ export interface IUser extends Document {
 		code: string;
 		expiresIn: string;
 	};
-	// badge?: {
-	// 	level: string;
-	// 	points: number;
-	// 	dateOfLastClick: Date;
-	// };
+	badge?: {
+		level: string;
+		points: number;
+		dateOfLastClick: Date;
+	};
 	resetPasswordToken?: string;
 	resetPasswordExpires?: Date;
 	date_created: Date;
@@ -63,21 +63,21 @@ const UserSchema: Schema = new Schema(
 				type: Date,
 			},
 		},
-		// badge: {
-		// 	level: {
-		// 		required: false,
-		// 		enum: BadgeLevels,
-		// 		type: String,
-		// 	},
-		// 	points: {
-		// 		required: false,
-		// 		type: Number,
-		// 	},
-		// 	dateOfLastClick: {
-		// 		required: false,
-		// 		type: Date,
-		// 	},
-		// },
+		badge: {
+			level: {
+				required: false,
+				enum: BadgeLevels,
+				type: String,
+			},
+			points: {
+				required: false,
+				type: Number,
+			},
+			dateOfLastClick: {
+				required: false,
+				type: Date,
+			},
+		},
 		resetPasswordToken: { type: String },
 		resetPasswordExpires: { type: Date },
 		date_created: { type: Date, default: Date.now },
