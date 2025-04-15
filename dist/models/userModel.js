@@ -24,7 +24,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const badge_1 = require("../enums/badge");
 const UserSchema = new mongoose_1.Schema({
     t_id: { type: String, required: true },
     photo: { type: String, default: "photo/default.png" },
@@ -53,21 +52,21 @@ const UserSchema = new mongoose_1.Schema({
             type: Date,
         },
     },
-    badge: {
-        level: {
-            required: false,
-            enum: badge_1.BadgeLevels,
-            type: String,
-        },
-        points: {
-            required: false,
-            type: Number,
-        },
-        dateOfLastClick: {
-            required: false,
-            type: Date,
-        },
-    },
+    // badge: {
+    // 	level: {
+    // 		required: false,
+    // 		enum: BadgeLevels,
+    // 		type: String,
+    // 	},
+    // 	points: {
+    // 		required: false,
+    // 		type: Number,
+    // 	},
+    // 	dateOfLastClick: {
+    // 		required: false,
+    // 		type: Date,
+    // 	},
+    // },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
     date_created: { type: Date, default: Date.now },
