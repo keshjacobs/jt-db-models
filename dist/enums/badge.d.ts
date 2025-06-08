@@ -12,9 +12,9 @@ export declare enum BadgePoints {
     base = 0,
     supporter = 10,
     contributor = 30,
-    initiator = 50,
-    builder = 70,
-    influencer = 90,
-    ambassador = 110,
-    changeMaker = 130
+    initiator = 60,
+    builder = 100,
+    influencer = 150,
+    ambassador = 210,
+    changeMaker = 280
 }

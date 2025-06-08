@@ -10,6 +10,7 @@ export { default as UserDevices } from "./models/deviceModel";
 export { default as UserReports } from "./models/reportsModel";
 export { default as BlockedUsers } from "./models/blockedUserModel";
 export { default as Badge } from "./models/badge";
+export { default as PodcastAlbum } from "./models/podcastAlbum";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -24,3 +25,4 @@ export { IUserDevice } from "./models/deviceModel";
 export { IUserReport } from "./models/reportsModel";
 export { IBlockedUser } from "./models/blockedUserModel";
 export { IBadge } from "./models/badge";
+export { IPodcastAlbum } from "./models/podcastAlbum";
