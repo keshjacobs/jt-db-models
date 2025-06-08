@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { IPodcastAlbum } from "./podcastAlbum";
 
 export interface ICast extends Document {
 	title: string;
@@ -24,6 +25,8 @@ export interface ICast extends Document {
 	reply: ICast;
 	caster: any;
 	recaster: any;
+	isPodcast: boolean;
+	podcastAlbum: IPodcastAlbum;
 	mentions: any[];
 }
 
@@ -53,6 +56,8 @@ const CastSchema: Schema = new Schema(
 		reply: { type: Schema.Types.ObjectId, ref: "Casts" },
 		caster: { type: Schema.Types.ObjectId, ref: "Users" },
 		recaster: { type: Schema.Types.ObjectId, ref: "Users" },
+		isPodcast: { type: Boolean, default: false },
+		podcastAlbum: { type: Schema.Types.ObjectId, ref: "PodcastAlbums" },
 		mentions: [{ type: Schema.Types.ObjectId, ref: "Users", default: [] }],
 	},
 	{
