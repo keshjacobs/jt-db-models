@@ -49,6 +49,8 @@ const CastSchema = new mongoose_1.Schema({
     reply: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
     caster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     recaster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    isPodcast: { type: Boolean, default: false },
+    podcastAlbum: { type: mongoose_1.Schema.Types.ObjectId, ref: "PodcastAlbums" },
     mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users", default: [] }],
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields

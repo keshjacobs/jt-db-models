@@ -1,4 +1,5 @@
 import mongoose, { Document } from "mongoose";
+import { IPodcastAlbum } from "./podcastAlbum";
 export interface ICast extends Document {
     title: string;
     cast: string;
@@ -23,6 +24,8 @@ export interface ICast extends Document {
     reply: ICast;
     caster: any;
     recaster: any;
+    isPodcast: boolean;
+    podcastAlbum: IPodcastAlbum;
     mentions: any[];
 }
 declare const Cast: mongoose.Model<ICast, {}, {}, {}, mongoose.Document<unknown, {}, ICast> & ICast & Required<{
