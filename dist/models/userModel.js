@@ -62,6 +62,7 @@ const UserSchema = new mongoose_1.Schema({
         points: {
             required: false,
             type: Number,
+            default: 0,
         },
         dateOfLastClick: {
             required: false,
@@ -72,6 +73,7 @@ const UserSchema = new mongoose_1.Schema({
         points: {
             required: false,
             type: Number,
+            default: 0,
         },
     },
     resetPasswordToken: { type: String },

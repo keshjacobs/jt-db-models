@@ -75,6 +75,7 @@ const UserSchema: Schema = new Schema(
 			points: {
 				required: false,
 				type: Number,
+				default: 0,
 			},
 			dateOfLastClick: {
 				required: false,
@@ -85,6 +86,7 @@ const UserSchema: Schema = new Schema(
 			points: {
 				required: false,
 				type: Number,
+				default: 0,
 			},
 		},
 		resetPasswordToken: { type: String },
