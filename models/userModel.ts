@@ -28,6 +28,9 @@ export interface IUser extends Document {
 		points: number;
 		dateOfLastClick: Date;
 	};
+	wallet?: {
+		points: number;
+	};
 	resetPasswordToken?: string;
 	resetPasswordExpires?: Date;
 	date_created: Date;
@@ -76,6 +79,12 @@ const UserSchema: Schema = new Schema(
 			dateOfLastClick: {
 				required: false,
 				type: Date,
+			},
+		},
+		wallet: {
+			points: {
+				required: false,
+				type: Number,
 			},
 		},
 		resetPasswordToken: { type: String },

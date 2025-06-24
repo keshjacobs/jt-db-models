@@ -26,6 +26,9 @@ export interface IUser extends Document {
         points: number;
         dateOfLastClick: Date;
     };
+    wallet?: {
+        points: number;
+    };
     resetPasswordToken?: string;
     resetPasswordExpires?: Date;
     date_created: Date;
