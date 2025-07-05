@@ -26,6 +26,7 @@ export interface ICast extends Document {
     recaster: any;
     isPodcast: boolean;
     podcastAlbum: IPodcastAlbum;
+    isSaved: boolean;
     mentions: any[];
 }
 declare const Cast: mongoose.Model<ICast, {}, {}, {}, mongoose.Document<unknown, {}, ICast> & ICast & Required<{
