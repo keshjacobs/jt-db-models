@@ -51,6 +51,7 @@ const CastSchema = new mongoose_1.Schema({
     recaster: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     isPodcast: { type: Boolean, default: false },
     podcastAlbum: { type: mongoose_1.Schema.Types.ObjectId, ref: "PodcastAlbums" },
+    isSaved: { type: Boolean, default: false },
     mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users", default: [] }],
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields

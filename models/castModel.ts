@@ -27,6 +27,7 @@ export interface ICast extends Document {
 	recaster: any;
 	isPodcast: boolean;
 	podcastAlbum: IPodcastAlbum;
+	isSaved: boolean;
 	mentions: any[];
 }
 
@@ -58,6 +59,7 @@ const CastSchema: Schema = new Schema(
 		recaster: { type: Schema.Types.ObjectId, ref: "Users" },
 		isPodcast: { type: Boolean, default: false },
 		podcastAlbum: { type: Schema.Types.ObjectId, ref: "PodcastAlbums" },
+		isSaved: { type: Boolean, default: false },
 		mentions: [{ type: Schema.Types.ObjectId, ref: "Users", default: [] }],
 	},
 	{
