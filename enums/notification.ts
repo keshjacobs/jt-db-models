@@ -4,4 +4,6 @@ export enum NotificationEvents {
 	reply = "reply",
 	subscription = "subscription",
 	mention = "mention",
+	chatRequest = "chatRequest",
+	chat = "chat",
 }
