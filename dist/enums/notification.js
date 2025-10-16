@@ -8,4 +8,6 @@ var NotificationEvents;
     NotificationEvents["reply"] = "reply";
     NotificationEvents["subscription"] = "subscription";
     NotificationEvents["mention"] = "mention";
+    NotificationEvents["chatRequest"] = "chatRequest";
+    NotificationEvents["chat"] = "chat";
 })(NotificationEvents || (exports.NotificationEvents = NotificationEvents = {}));

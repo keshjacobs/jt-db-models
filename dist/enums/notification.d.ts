@@ -3,5 +3,7 @@ export declare enum NotificationEvents {
     recast = "recast",
     reply = "reply",
     subscription = "subscription",
-    mention = "mention"
+    mention = "mention",
+    chatRequest = "chatRequest",
+    chat = "chat"
 }
