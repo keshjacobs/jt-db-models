@@ -12,19 +12,20 @@ export interface IChat extends Document {
 			accepted: boolean;
 		}
 	];
-	conversations: [
-		{
-			user: IUser;
-			cast: string;
-			cast_id: string;
-			played: boolean;
-			duration: number;
-			listens: IListener[];
-			expired: boolean;
-			date_created: string;
-			date_expired: string;
-		}
-	];
+	// conversations: [
+	// 	{
+	// 		user: IUser;
+	// 		cast: string;
+	// 		cast_id: string;
+	// 		played: boolean;
+	// 		duration: number;
+	// 		listens: IListener[];
+	// 		expired: boolean;
+	// 		date_created: string;
+	// 		date_expired: string;
+	// 	}
+	// ];
+	groupRequestId?: any;
 	last_modified: string;
 }
 
@@ -39,19 +40,24 @@ const ChatSchema = new Schema(
 				accepted: { type: Boolean },
 			},
 		],
-		conversations: [
-			{
-				user: { type: Schema.Types.ObjectId, ref: "Users" },
-				cast: { type: String },
-				cast_id: { type: String },
-				played: { type: Boolean, default: false },
-				duration: { type: Number, default: 0 },
-				listens: [{ type: Schema.Types.ObjectId, ref: "CastListeners" }],
-				expired: { type: Boolean, default: false },
-				date_created: { type: Date, default: Date.now },
-				date_expired: { type: Date },
-			},
-		],
+		// conversations: [
+		// 	{
+		// 		user: { type: Schema.Types.ObjectId, ref: "Users" },
+		// 		cast: { type: String },
+		// 		cast_id: { type: String },
+		// 		played: { type: Boolean, default: false },
+		// 		duration: { type: Number, default: 0 },
+		// 		listens: [{ type: Schema.Types.ObjectId, ref: "CastListeners" }],
+		// 		expired: { type: Boolean, default: false },
+		// 		date_created: { type: Date, default: Date.now },
+		// 		date_expired: { type: Date },
+		// 	},
+		// ],
+		groupRequestId: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "ChatRequest",
+			required: false,
+		},
 		last_modified: { type: Date, default: Date.now },
 	},
 	{
