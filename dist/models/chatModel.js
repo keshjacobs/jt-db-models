@@ -34,19 +34,24 @@ const ChatSchema = new mongoose_1.Schema({
             accepted: { type: Boolean },
         },
     ],
-    conversations: [
-        {
-            user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-            cast: { type: String },
-            cast_id: { type: String },
-            played: { type: Boolean, default: false },
-            duration: { type: Number, default: 0 },
-            listens: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "CastListeners" }],
-            expired: { type: Boolean, default: false },
-            date_created: { type: Date, default: Date.now },
-            date_expired: { type: Date },
-        },
-    ],
+    // conversations: [
+    // 	{
+    // 		user: { type: Schema.Types.ObjectId, ref: "Users" },
+    // 		cast: { type: String },
+    // 		cast_id: { type: String },
+    // 		played: { type: Boolean, default: false },
+    // 		duration: { type: Number, default: 0 },
+    // 		listens: [{ type: Schema.Types.ObjectId, ref: "CastListeners" }],
+    // 		expired: { type: Boolean, default: false },
+    // 		date_created: { type: Date, default: Date.now },
+    // 		date_expired: { type: Date },
+    // 	},
+    // ],
+    groupRequestId: {
+        type: mongoose_1.default.Schema.Types.ObjectId,
+        ref: "ChatRequest",
+        required: false,
+    },
     last_modified: { type: Date, default: Date.now },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
