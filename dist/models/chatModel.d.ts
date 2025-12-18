@@ -1,5 +1,4 @@
 import mongoose, { Document } from "mongoose";
-import { IListener } from "./listenersModel";
 import { IUser } from "./userModel";
 export interface IChat extends Document {
     title: string;
@@ -11,19 +10,7 @@ export interface IChat extends Document {
             accepted: boolean;
         }
     ];
-    conversations: [
-        {
-            user: IUser;
-            cast: string;
-            cast_id: string;
-            played: boolean;
-            duration: number;
-            listens: IListener[];
-            expired: boolean;
-            date_created: string;
-            date_expired: string;
-        }
-    ];
+    groupRequestId?: any;
     last_modified: string;
 }
 declare const Chat: mongoose.Model<IChat, {}, {}, {}, mongoose.Document<unknown, {}, IChat> & IChat & Required<{
