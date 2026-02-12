@@ -24,39 +24,26 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const ChatSchema = new mongoose_1.Schema({
-    roomType: { type: String, enum: ["Private", "Group"], default: "Group" },
-    photo: { type: String },
-    members: [
-        {
-            user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
-            admin: { type: Boolean },
-            accepted: { type: Boolean },
-        },
-    ],
-    idemKey: { type: String, unique: true },
-    // conversations: [
-    //   {
-    //     user: { type: Schema.Types.ObjectId, ref: "Users" },
-    //     cast: { type: String },
-    //     cast_id: { type: String },
-    //     played: { type: Boolean, default: false },
-    //     duration: { type: Number, default: 0 },
-    //     listens: [{ type: Schema.Types.ObjectId, ref: "CastListeners" }],
-    //     expired: { type: Boolean, default: false },
-    //     date_created: { type: Date, default: Date.now },
-    //     date_expired: { type: Date },
-    //   },
-    // ],
-    groupRequestId: {
-        type: mongoose_1.default.Schema.Types.ObjectId,
-        ref: "ChatRequest",
-        required: false,
+const chatRequest_1 = require("../enums/chatRequest");
+const ChatRequestsSchema = new mongoose_1.Schema({
+    receiver: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    sender: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    status: {
+        type: String,
+        enum: chatRequest_1.ChatRequestStatus,
+        default: chatRequest_1.ChatRequestStatus.pending,
     },
-    last_modified: { type: Date, default: Date.now },
+    requestType: {
+        type: String,
+        enum: ["Private", "Group"],
+        default: "Private",
+    },
+    groupRequestId: {
+        type: String,
+    },
 }, {
     timestamps: true,
 });
-ChatSchema.set("toJSON", { virtuals: true });
-const Chat = mongoose_1.default.model("Chats", ChatSchema);
-exports.default = Chat;
+ChatRequestsSchema.set("toJSON", { virtuals: true });
+const ChatRequests = mongoose_1.default.model("ChatRequests", ChatRequestsSchema);
+exports.default = ChatRequests;
