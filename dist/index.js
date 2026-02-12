@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PodcastAlbum = exports.Badge = exports.BlockedUsers = exports.UserReports = exports.UserDevices = exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
+exports.ChatRequests = exports.Message = exports.PodcastAlbum = exports.Badge = exports.BlockedUsers = exports.UserReports = exports.UserDevices = exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
 var userModel_1 = require("./models/userModel");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return __importDefault(userModel_1).default; } });
 var castModel_1 = require("./models/castModel");
@@ -30,3 +30,7 @@ var badge_1 = require("./models/badge");
 Object.defineProperty(exports, "Badge", { enumerable: true, get: function () { return __importDefault(badge_1).default; } });
 var podcastAlbum_1 = require("./models/podcastAlbum");
 Object.defineProperty(exports, "PodcastAlbum", { enumerable: true, get: function () { return __importDefault(podcastAlbum_1).default; } });
+var messageModel_1 = require("./models/messageModel");
+Object.defineProperty(exports, "Message", { enumerable: true, get: function () { return __importDefault(messageModel_1).default; } });
+var chatRequestModel_1 = require("./models/chatRequestModel");
+Object.defineProperty(exports, "ChatRequests", { enumerable: true, get: function () { return __importDefault(chatRequestModel_1).default; } });

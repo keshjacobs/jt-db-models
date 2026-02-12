@@ -11,6 +11,8 @@ export { default as UserReports } from "./models/reportsModel";
 export { default as BlockedUsers } from "./models/blockedUserModel";
 export { default as Badge } from "./models/badge";
 export { default as PodcastAlbum } from "./models/podcastAlbum";
+export { default as Message } from "./models/messageModel";
+export { default as ChatRequests } from "./models/chatRequestModel";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -26,3 +28,5 @@ export { IUserReport } from "./models/reportsModel";
 export { IBlockedUser } from "./models/blockedUserModel";
 export { IBadge } from "./models/badge";
 export { IPodcastAlbum } from "./models/podcastAlbum";
+export { IMessage } from "./models/messageModel";
+export { IChatRequests } from "./models/chatRequestModel";
