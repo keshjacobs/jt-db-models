@@ -1,7 +1,7 @@
 import mongoose, { Document } from "mongoose";
 import { IUser } from "./userModel";
 export interface IChat extends Document {
-    title: string;
+    roomType: string;
     photo: string;
     members: [
         {
@@ -10,6 +10,7 @@ export interface IChat extends Document {
             accepted: boolean;
         }
     ];
+    idemKey: string;
     groupRequestId?: any;
     last_modified: string;
 }
