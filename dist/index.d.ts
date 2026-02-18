@@ -28,3 +28,4 @@ export { IBadge } from "./models/badge";
 export { IPodcastAlbum } from "./models/podcastAlbum";
 export { IMessage } from "./models/messageModel";
 export { IChatRequests } from "./models/chatRequestModel";
+export { MESSAGE_EMOJIS } from "./models/messageModel";
