@@ -1,6 +1,11 @@
 import mongoose, { Document } from "mongoose";
 import { IUser } from "./userModel";
 import { IChat } from "./chatModel";
+export declare const MESSAGE_EMOJIS: Record<number, string>;
+export interface IPlayedBy {
+    user: any;
+    playedAt: Date;
+}
 export interface IMessage extends Document {
     user: IUser;
     chatRoom: IChat;
@@ -8,9 +13,12 @@ export interface IMessage extends Document {
     listens: string[];
     duration: number;
     played: boolean;
-    isOptimistic: boolean;
+    playedBy: IPlayedBy[];
     tempMessageId: string;
     status: string;
+    isActive: boolean;
+    currentEmoji: string;
+    expiresAt: Date;
     createdAt: Date;
     updatedAt: Date;
 }
