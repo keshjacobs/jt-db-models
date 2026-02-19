@@ -78,8 +78,14 @@ MessageSchema.set("toJSON", { virtuals: true });
 // MessageSchema.index({ createdAt: 1 }, { expireAfterSeconds: 86400 }); // Add TTL index on createdAt to expire after a day
 
 // Index for cronjob queries — keeps it fast
-MessageSchema.index({ isActive: 1, expiresAt: 1 });
-MessageSchema.index({ createdAt: 1 });
+// MessageSchema.index({ isActive: 1, expiresAt: 1 });
+// MessageSchema.index({ createdAt: 1 });
+MessageSchema.index({
+	isActive: 1,
+	played: 1,
+	expiresAt: 1,
+	createdAt: 1,
+});
 
 const Message = mongoose.model<IMessage>("Messages", MessageSchema);
 
