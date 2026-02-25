@@ -4,14 +4,14 @@ import { IChat } from "./chatModel";
 
 // Emoji progression from hour 6 to hour 11
 export const MESSAGE_EMOJIS: Record<number, string> = {
-	6: "🤩",
-	7: "😁",
-	8: "😊",
-	9: "😏",
-	10: "🥹",
-	11: "😭",
-	12: "😤",
-	13: "👿",
+	0: "🤩",
+	6: "😁",
+	7: "😊",
+	8: "😏",
+	9: "🥹",
+	10: "😭",
+	11: "😤",
+	12: "👿",
 };
 
 export interface IPlayedBy {
