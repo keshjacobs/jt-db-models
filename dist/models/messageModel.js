@@ -27,14 +27,14 @@ exports.MESSAGE_EMOJIS = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 // Emoji progression from hour 6 to hour 11
 exports.MESSAGE_EMOJIS = {
-    6: "🤩",
-    7: "😁",
-    8: "😊",
-    9: "😏",
-    10: "🥹",
-    11: "😭",
-    12: "😤",
-    13: "👿",
+    0: "🤩",
+    6: "😁",
+    7: "😊",
+    8: "😏",
+    9: "🥹",
+    10: "😭",
+    11: "😤",
+    12: "👿",
 };
 const PlayedBySchema = new mongoose_1.Schema({
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
