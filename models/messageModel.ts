@@ -58,7 +58,7 @@ const MessageSchema: Schema = new Schema(
 		tempMessageId: { type: String },
 		status: { type: String, enum: ["sending", "sent"], default: "sent" },
 		isActive: { type: Boolean, default: true },
-		currentEmoji: { type: String, default: MESSAGE_EMOJIS[6] },
+		currentEmoji: { type: String, default: MESSAGE_EMOJIS[0] },
 		expiresAt: { type: Date },
 	},
 	{
