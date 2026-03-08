@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, Types, } from "mongoose";
 import { BadgeLevels } from "../enums/badge";
 
 export interface IUser extends Document {
@@ -35,6 +35,9 @@ export interface IUser extends Document {
 	resetPasswordExpires?: Date;
 	date_created: Date;
 	status: number;
+	referralCode?: string;
+	referredBy?: Types.ObjectId;
+	bonusPoints: number;
 }
 
 const UserSchema: Schema = new Schema(
@@ -93,6 +96,21 @@ const UserSchema: Schema = new Schema(
 		resetPasswordExpires: { type: Date },
 		date_created: { type: Date, default: Date.now },
 		status: { type: Number, default: 1 },
+		referralCode: {
+			type: String,
+			unique: true,
+			sparse: true // allows multiple null values if user doesn't have referral code yet
+		},
+
+		referredBy: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User'
+		},
+
+		bonusPoints: {
+			type: Number,
+			default: 0
+		}
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
