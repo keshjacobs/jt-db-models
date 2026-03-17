@@ -98,12 +98,16 @@ const UserSchema: Schema = new Schema(
 		referralCode: {
 			type: String,
 			unique: true,
-			sparse: true // allows multiple null values if user doesn't have referral code yet
+			sparse: true, // allows multiple null values if user doesn't have referral code yet
+			default: function (this: IUser): String {
+				return this.user_name;   // 'this' refers to the document being created
+			}
 		},
 
 		referredBy: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'User'
+			ref: 'User',
+			default: null
 		}
 	},
 	{
