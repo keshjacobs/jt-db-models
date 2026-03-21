@@ -100,7 +100,7 @@ const UserSchema: Schema = new Schema(
 			unique: true,
 			sparse: true, // allows multiple null values if user doesn't have referral code yet
 			default: function (this: IUser): String {
-				return this.user_name;   // 'this' refers to the document being created
+				return this.user_name.toLowerCase();   // 'this' refers to the document being created
 			}
 		},
 
