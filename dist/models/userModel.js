@@ -23,8 +23,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TTP_VOICE_NAMES = exports.TTP_GENDERS = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const badge_1 = require("../enums/badge");
+var TTP_GENDERS;
+(function (TTP_GENDERS) {
+    TTP_GENDERS["male"] = "male";
+    TTP_GENDERS["female"] = "female";
+})(TTP_GENDERS || (exports.TTP_GENDERS = TTP_GENDERS = {}));
+var TTP_VOICE_NAMES;
+(function (TTP_VOICE_NAMES) {
+    TTP_VOICE_NAMES["male"] = "en-GB-Neural2-O";
+    TTP_VOICE_NAMES["female"] = "en-GB-Neural2-N";
+})(TTP_VOICE_NAMES || (exports.TTP_VOICE_NAMES = TTP_VOICE_NAMES = {}));
 const UserSchema = new mongoose_1.Schema({
     t_id: { type: String, required: true },
     photo: { type: String, default: "photo/default.png" },
@@ -74,6 +85,18 @@ const UserSchema = new mongoose_1.Schema({
             required: false,
             type: Number,
             default: 0,
+        },
+    },
+    ttp: {
+        gender: {
+            required: false,
+            type: String,
+            enum: TTP_GENDERS,
+        },
+        voiceName: {
+            required: false,
+            type: String,
+            enum: TTP_VOICE_NAMES,
         },
     },
     resetPasswordToken: { type: String },
