@@ -1,4 +1,12 @@
 import mongoose, { Document } from "mongoose";
+export declare enum TTP_GENDERS {
+    male = "male",
+    female = "female"
+}
+export declare enum TTP_VOICE_NAMES {
+    male = "en-GB-Neural2-O",
+    female = "en-GB-Neural2-N"
+}
 export interface IUser extends Document {
     t_id: string;
     photo: string;
@@ -28,6 +36,10 @@ export interface IUser extends Document {
     };
     wallet?: {
         points: number;
+    };
+    ttp: {
+        gender: string;
+        voiceName: string;
     };
     resetPasswordToken?: string;
     resetPasswordExpires?: Date;

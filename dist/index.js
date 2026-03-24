@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MESSAGE_EMOJIS = exports.ChatRequests = exports.Message = exports.PodcastAlbum = exports.Badge = exports.BlockedUsers = exports.UserReports = exports.UserDevices = exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
+exports.TTP_VOICE_NAMES = exports.TTP_GENDERS = exports.MESSAGE_EMOJIS = exports.ChatRequests = exports.Message = exports.PodcastAlbum = exports.Badge = exports.BlockedUsers = exports.UserReports = exports.UserDevices = exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
 var userModel_1 = require("./models/userModel");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return __importDefault(userModel_1).default; } });
 var castModel_1 = require("./models/castModel");
@@ -37,3 +37,7 @@ Object.defineProperty(exports, "ChatRequests", { enumerable: true, get: function
 // Constants
 var messageModel_2 = require("./models/messageModel");
 Object.defineProperty(exports, "MESSAGE_EMOJIS", { enumerable: true, get: function () { return messageModel_2.MESSAGE_EMOJIS; } });
+// Enums
+var userModel_2 = require("./models/userModel");
+Object.defineProperty(exports, "TTP_GENDERS", { enumerable: true, get: function () { return userModel_2.TTP_GENDERS; } });
+Object.defineProperty(exports, "TTP_VOICE_NAMES", { enumerable: true, get: function () { return userModel_2.TTP_VOICE_NAMES; } });

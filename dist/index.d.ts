@@ -29,3 +29,4 @@ export { IPodcastAlbum } from "./models/podcastAlbum";
 export { IMessage } from "./models/messageModel";
 export { IChatRequests } from "./models/chatRequestModel";
 export { MESSAGE_EMOJIS } from "./models/messageModel";
+export { TTP_GENDERS, TTP_VOICE_NAMES } from "./models/userModel";
