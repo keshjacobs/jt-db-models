@@ -1,6 +1,16 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { BadgeLevels } from "../enums/badge";
 
+export enum TTP_GENDERS {
+	male = "male",
+	female = "female",
+}
+
+export enum TTP_VOICE_NAMES {
+	male = "en-GB-Neural2-O",
+	female = "en-GB-Neural2-N",
+}
+
 export interface IUser extends Document {
 	t_id: string;
 	photo: string;
@@ -30,6 +40,10 @@ export interface IUser extends Document {
 	};
 	wallet?: {
 		points: number;
+	};
+	ttp: {
+		gender: string;
+		voiceName: string;
 	};
 	resetPasswordToken?: string;
 	resetPasswordExpires?: Date;
@@ -89,6 +103,18 @@ const UserSchema: Schema = new Schema(
 				default: 0,
 			},
 		},
+		ttp: {
+			gender: {
+				required: false,
+				type: String,
+				enum: TTP_GENDERS,
+			},
+			voiceName: {
+				required: false,
+				type: String,
+				enum: TTP_VOICE_NAMES,
+			},
+		},
 		resetPasswordToken: { type: String },
 		resetPasswordExpires: { type: Date },
 		date_created: { type: Date, default: Date.now },
@@ -96,7 +122,7 @@ const UserSchema: Schema = new Schema(
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
-	}
+	},
 );
 
 UserSchema.set("toJSON", { virtuals: true });

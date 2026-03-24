@@ -33,3 +33,6 @@ export { IChatRequests } from "./models/chatRequestModel";
 
 // Constants
 export { MESSAGE_EMOJIS } from "./models/messageModel";
+
+// Enums
+export { TTP_GENDERS, TTP_VOICE_NAMES } from "./models/userModel";
