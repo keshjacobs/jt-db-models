@@ -9,7 +9,5 @@ export interface IPodcastAlbum extends Document {
 }
 declare const PodcastAlbum: mongoose.Model<IPodcastAlbum, {}, {}, {}, mongoose.Document<unknown, {}, IPodcastAlbum> & IPodcastAlbum & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default PodcastAlbum;

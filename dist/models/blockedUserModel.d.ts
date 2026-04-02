@@ -7,7 +7,5 @@ export interface IBlockedUser extends Document {
 }
 declare const BlockedUsers: mongoose.Model<IBlockedUser, {}, {}, {}, mongoose.Document<unknown, {}, IBlockedUser> & IBlockedUser & Required<{
     _id: unknown;
-}> & {
-    __v: number;
-}, any>;
+}>, any>;
 export default BlockedUsers;

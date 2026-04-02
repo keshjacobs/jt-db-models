@@ -8,7 +8,5 @@ export interface IChatRequests extends Document {
 }
 declare const ChatRequests: mongoose.Model<IChatRequests, {}, {}, {}, mongoose.Document<unknown, {}, IChatRequests> & IChatRequests & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default ChatRequests;

@@ -24,7 +24,5 @@ export interface IMessage extends Document {
 }
 declare const Message: mongoose.Model<IMessage, {}, {}, {}, mongoose.Document<unknown, {}, IMessage> & IMessage & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default Message;

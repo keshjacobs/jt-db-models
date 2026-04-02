@@ -7,7 +7,5 @@ export interface ISubscription extends Document {
 }
 declare const Subscriptions: mongoose.Model<ISubscription, {}, {}, {}, mongoose.Document<unknown, {}, ISubscription> & ISubscription & Required<{
     _id: unknown;
-}> & {
-    __v: number;
-}, any>;
+}>, any>;
 export default Subscriptions;
