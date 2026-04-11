@@ -58,10 +58,11 @@ const MessageSchema = new mongoose_1.Schema({
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
     playedBy: { type: [PlayedBySchema], default: [] },
-    // isOptimistic: { type: Boolean, default: false },
+    isOptimistic: { type: Boolean, default: false },
     tempMessageId: { type: String },
     status: { type: String, enum: ["sending", "sent"], default: "sent" },
     isActive: { type: Boolean, default: true },
+    isTTS: { type: Boolean, default: false },
     currentEmoji: { type: String, default: exports.MESSAGE_EMOJIS[0] },
     expiresAt: { type: Date },
 }, {

@@ -35,10 +35,11 @@ export interface IMessage extends Document {
   duration: number;
   played: boolean;
   playedBy: IPlayedBy[];
-  // isOptimistic: boolean;
+  isOptimistic: boolean;
   tempMessageId: string;
   status: string;
   isActive: boolean; // false after 12 hours
+  isTTS: boolean;
   currentEmoji: string; // populated from hour 6 onwards
   expiresAt: Date;
   createdAt: Date;
@@ -54,10 +55,11 @@ const MessageSchema: Schema = new Schema(
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
     playedBy: { type: [PlayedBySchema], default: [] },
-    // isOptimistic: { type: Boolean, default: false },
+    isOptimistic: { type: Boolean, default: false },
     tempMessageId: { type: String },
     status: { type: String, enum: ["sending", "sent"], default: "sent" },
     isActive: { type: Boolean, default: true },
+    isTTS: { type: Boolean, default: false },
     currentEmoji: { type: String, default: MESSAGE_EMOJIS[0] },
     expiresAt: { type: Date },
   },

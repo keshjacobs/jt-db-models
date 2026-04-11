@@ -14,9 +14,11 @@ export interface IMessage extends Document {
     duration: number;
     played: boolean;
     playedBy: IPlayedBy[];
+    isOptimistic: boolean;
     tempMessageId: string;
     status: string;
     isActive: boolean;
+    isTTS: boolean;
     currentEmoji: string;
     expiresAt: Date;
     createdAt: Date;
