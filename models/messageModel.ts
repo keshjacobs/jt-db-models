@@ -31,6 +31,8 @@ export interface IMessage extends Document {
   user: IUser;
   chatRoom: IChat;
   content: string;
+  type: "image" | "audio";
+  imageUrls?: string[];
   listens: string[];
   duration: number;
   played: boolean;
@@ -51,6 +53,12 @@ const MessageSchema: Schema = new Schema(
     user: { type: Schema.Types.ObjectId, ref: "Users" },
     chatRoom: { type: Schema.Types.ObjectId, ref: "Chats" },
     content: { type: String },
+    type: {
+      type: String,
+      enum: ["image", "audio"],
+      default: "audio",
+    },
+    imageUrls: [{ type: String }],
     listens: [{ type: String }],
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
