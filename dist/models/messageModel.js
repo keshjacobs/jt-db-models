@@ -54,6 +54,12 @@ const MessageSchema = new mongoose_1.Schema({
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     chatRoom: { type: mongoose_1.Schema.Types.ObjectId, ref: "Chats" },
     content: { type: String },
+    type: {
+        type: String,
+        enum: ["image", "audio"],
+        default: "audio",
+    },
+    imageUrls: [{ type: String }],
     listens: [{ type: String }],
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
