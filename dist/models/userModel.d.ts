@@ -1,4 +1,4 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Document, Types } from "mongoose";
 export declare enum TTP_GENDERS {
     male = "male",
     female = "female"
@@ -45,10 +45,10 @@ export interface IUser extends Document {
     resetPasswordExpires?: Date;
     date_created: Date;
     status: number;
+    referralCode?: string;
+    referredBy?: Types.ObjectId;
 }
 declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser> & IUser & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default User;

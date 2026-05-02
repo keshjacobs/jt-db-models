@@ -14,7 +14,5 @@ export interface INotification extends Document {
 }
 declare const Notifications: mongoose.Model<INotification, {}, {}, {}, mongoose.Document<unknown, {}, INotification> & INotification & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default Notifications;

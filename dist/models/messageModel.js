@@ -15,13 +15,23 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 }) : function(o, v) {
     o["default"] = v;
 });
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MESSAGE_EMOJIS = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
@@ -48,10 +58,11 @@ const MessageSchema = new mongoose_1.Schema({
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
     playedBy: { type: [PlayedBySchema], default: [] },
-    // isOptimistic: { type: Boolean, default: false },
+    isOptimistic: { type: Boolean, default: false },
     tempMessageId: { type: String },
     status: { type: String, enum: ["sending", "sent"], default: "sent" },
     isActive: { type: Boolean, default: true },
+    isTTS: { type: Boolean, default: false },
     currentEmoji: { type: String, default: exports.MESSAGE_EMOJIS[0] },
     expiresAt: { type: Date },
 }, {
@@ -75,5 +86,6 @@ MessageSchema.index({
     expiresAt: 1,
     createdAt: 1,
 });
+MessageSchema.index({ chatRoom: 1, createdAt: -1 });
 const Message = mongoose_1.default.model("Messages", MessageSchema);
 exports.default = Message;

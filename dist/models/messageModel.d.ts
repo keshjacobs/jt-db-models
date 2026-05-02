@@ -14,9 +14,11 @@ export interface IMessage extends Document {
     duration: number;
     played: boolean;
     playedBy: IPlayedBy[];
+    isOptimistic: boolean;
     tempMessageId: string;
     status: string;
     isActive: boolean;
+    isTTS: boolean;
     currentEmoji: string;
     expiresAt: Date;
     createdAt: Date;
@@ -24,7 +26,5 @@ export interface IMessage extends Document {
 }
 declare const Message: mongoose.Model<IMessage, {}, {}, {}, mongoose.Document<unknown, {}, IMessage> & IMessage & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default Message;

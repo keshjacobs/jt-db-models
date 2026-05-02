@@ -8,7 +8,5 @@ export interface IBadge extends Document {
 }
 declare const Badges: mongoose.Model<IBadge, {}, {}, {}, mongoose.Document<unknown, {}, IBadge> & IBadge & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default Badges;

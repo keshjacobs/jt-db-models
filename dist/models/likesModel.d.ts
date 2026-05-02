@@ -8,7 +8,5 @@ export interface ILike extends Document {
 }
 declare const CastLikes: mongoose.Model<ILike, {}, {}, {}, mongoose.Document<unknown, {}, ILike> & ILike & Required<{
     _id: unknown;
-}> & {
-    __v?: number;
-}, any>;
+}>, any>;
 export default CastLikes;
