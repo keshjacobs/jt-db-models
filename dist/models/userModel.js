@@ -119,13 +119,14 @@ const UserSchema = new mongoose_1.Schema({
         sparse: true, // allows multiple null values if user doesn't have referral code yet
         default: function () {
             return this.user_name.toLowerCase(); // 'this' refers to the document being created
-        }
+        },
     },
     referredBy: {
         type: mongoose_1.default.Schema.Types.ObjectId,
-        ref: 'User',
-        default: null
-    }
+        ref: "User",
+        default: null,
+    },
+    lastActive: { type: Date, default: Date.now, index: true },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });

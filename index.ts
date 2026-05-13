@@ -13,6 +13,7 @@ export { default as Badge } from "./models/badge";
 export { default as PodcastAlbum } from "./models/podcastAlbum";
 export { default as Message } from "./models/messageModel";
 export { default as ChatRequests } from "./models/chatRequestModel";
+export { default as ActivityLog } from "./models/activityLogModel";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -30,9 +31,11 @@ export { IBadge } from "./models/badge";
 export { IPodcastAlbum } from "./models/podcastAlbum";
 export { IMessage } from "./models/messageModel";
 export { IChatRequests } from "./models/chatRequestModel";
+export { IActivityLog } from "./models/activityLogModel";
 
 // Constants
 export { MESSAGE_EMOJIS } from "./models/messageModel";
 
 // Enums
 export { TTP_GENDERS, TTP_VOICE_NAMES } from "./models/userModel";
+export { ActivityType, ActivityTargetModel } from "./enums/activityLog";
