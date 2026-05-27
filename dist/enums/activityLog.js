@@ -42,6 +42,9 @@ var ActivityType;
     ActivityType["CHAT_REQUEST_REJECTED"] = "chat_request_rejected";
     ActivityType["MESSAGE_SENT"] = "message_sent";
     ActivityType["MESSAGE_PLAYED"] = "message_played";
+    // Search
+    ActivityType["VIEW_EXPLORE"] = "view_explore";
+    ActivityType["SEARCH"] = "search";
     // Badge / wallet
     ActivityType["BADGE_CLICK"] = "badge_click";
     // Generic presence

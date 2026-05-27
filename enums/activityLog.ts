@@ -44,6 +44,10 @@ export enum ActivityType {
   MESSAGE_SENT = "message_sent",
   MESSAGE_PLAYED = "message_played",
 
+  // Search
+  VIEW_EXPLORE = "view_explore",
+  SEARCH = "search",
+
   // Badge / wallet
   BADGE_CLICK = "badge_click",
 
