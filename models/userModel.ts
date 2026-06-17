@@ -22,7 +22,8 @@ export interface IUser extends Document {
   admin: boolean;
   phone?: string;
   bio?: string;
-  password: string;
+  password?: string;
+  googleId?: string;
   pushtoken: string;
   coord: {
     lat: number;
@@ -66,7 +67,8 @@ const UserSchema: Schema = new Schema(
     admin: { type: Boolean, default: false },
     phone: { type: String, default: undefined },
     bio: { type: String, default: undefined },
-    password: { type: String, required: true, select: false },
+    password: { type: String, required: false, select: false },
+    googleId: { type: String, unique: true, sparse: true, index: true },
     pushtoken: { type: String, default: "000" },
     coord: {
       lat: { type: Number, default: 0 },
