@@ -57,7 +57,8 @@ const UserSchema = new mongoose_1.Schema({
     admin: { type: Boolean, default: false },
     phone: { type: String, default: undefined },
     bio: { type: String, default: undefined },
-    password: { type: String, required: true, select: false },
+    password: { type: String, required: false, select: false },
+    googleId: { type: String, unique: true, sparse: true, index: true },
     pushtoken: { type: String, default: "000" },
     coord: {
         lat: { type: Number, default: 0 },

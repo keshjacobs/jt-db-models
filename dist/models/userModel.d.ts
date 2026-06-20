@@ -18,7 +18,8 @@ export interface IUser extends Document {
     admin: boolean;
     phone?: string;
     bio?: string;
-    password: string;
+    password?: string;
+    googleId?: string;
     pushtoken: string;
     coord: {
         lat: number;

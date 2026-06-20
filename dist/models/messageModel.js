@@ -35,9 +35,10 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MESSAGE_EMOJIS = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-// Emoji progression from hour 6 to hour 11
+// MESSAGE_EMOJIS — add key 0 for ⭐, key 1 for 🤩 (covers hrs 1–5)
 exports.MESSAGE_EMOJIS = {
-    0: "🤩",
+    0: "⭐",
+    1: "🤩",
     6: "😁",
     7: "😊",
     8: "😏",
