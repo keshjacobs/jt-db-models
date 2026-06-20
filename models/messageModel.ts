@@ -2,9 +2,10 @@ import mongoose, { Schema, Document } from "mongoose";
 import { IUser } from "./userModel";
 import { IChat } from "./chatModel";
 
-// Emoji progression from hour 6 to hour 11
+// MESSAGE_EMOJIS — add key 0 for ⭐, key 1 for 🤩 (covers hrs 1–5)
 export const MESSAGE_EMOJIS: Record<number, string> = {
-  0: "🤩",
+  0: "⭐",
+  1: "🤩",
   6: "😁",
   7: "😊",
   8: "😏",
