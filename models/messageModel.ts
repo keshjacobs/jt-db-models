@@ -32,8 +32,10 @@ export interface IMessage extends Document {
   user: IUser;
   chatRoom: IChat;
   content: string;
-  type: "image" | "audio";
+  type: "image" | "audio" | "video";
   imageUrls?: string[];
+  videoUrls?: string[];
+  videoDuration?: number;
   listens: string[];
   duration: number;
   played: boolean;
@@ -56,10 +58,12 @@ const MessageSchema: Schema = new Schema(
     content: { type: String },
     type: {
       type: String,
-      enum: ["image", "audio"],
+      enum: ["image", "audio", "video"],
       default: "audio",
     },
     imageUrls: [{ type: String }],
+    videoUrls: [{ type: String }],
+    videoDuration: { type: Number },
     listens: [{ type: String }],
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
