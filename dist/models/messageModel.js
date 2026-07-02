@@ -57,10 +57,12 @@ const MessageSchema = new mongoose_1.Schema({
     content: { type: String },
     type: {
         type: String,
-        enum: ["image", "audio"],
+        enum: ["image", "audio", "video"],
         default: "audio",
     },
     imageUrls: [{ type: String }],
+    videoUrls: [{ type: String }],
+    videoDuration: { type: Number },
     listens: [{ type: String }],
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
