@@ -47,6 +47,7 @@ export interface IMessage extends Document {
   isActive: boolean; // false after 12 hours
   isTTS: boolean;
   currentEmoji: string; // populated from hour 6 onwards
+  replyTo?: IMessage;
   expiresAt: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -76,6 +77,7 @@ const MessageSchema: Schema = new Schema(
     isActive: { type: Boolean, default: true },
     isTTS: { type: Boolean, default: false },
     currentEmoji: { type: String, default: MESSAGE_EMOJIS[0] },
+    replyTo: { type: Schema.Types.ObjectId, ref: "Messages", default: null },
     expiresAt: { type: Date },
   },
   {
