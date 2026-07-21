@@ -25,6 +25,7 @@ export interface IMessage extends Document {
     isActive: boolean;
     isTTS: boolean;
     currentEmoji: string;
+    replyTo?: IMessage;
     expiresAt: Date;
     createdAt: Date;
     updatedAt: Date;
