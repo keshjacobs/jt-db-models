@@ -74,6 +74,7 @@ const MessageSchema = new mongoose_1.Schema({
     isActive: { type: Boolean, default: true },
     isTTS: { type: Boolean, default: false },
     currentEmoji: { type: String, default: exports.MESSAGE_EMOJIS[0] },
+    replyTo: { type: mongoose_1.Schema.Types.ObjectId, ref: "Messages", default: null },
     expiresAt: { type: Date },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
