@@ -5,6 +5,8 @@ export interface IChatRequests extends Document {
     receiver: IUser;
     sender: IUser;
     status: ChatRequestStatus;
+    requestType: "Private" | "Group";
+    groupRequestId?: mongoose.Types.ObjectId | string;
 }
 declare const ChatRequests: mongoose.Model<IChatRequests, {}, {}, {}, mongoose.Document<unknown, {}, IChatRequests> & IChatRequests & Required<{
     _id: unknown;

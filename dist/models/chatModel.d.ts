@@ -3,13 +3,11 @@ import { IUser } from "./userModel";
 export interface IChat extends Document {
     roomType: string;
     photo: string;
-    members: [
-        {
-            user: IUser;
-            admin: boolean;
-            accepted: boolean;
-        }
-    ];
+    members: {
+        user: mongoose.Types.ObjectId | IUser;
+        admin: boolean;
+        accepted: boolean;
+    }[];
     idemKey: string;
     groupRequestId?: any;
     lastMessage: {
