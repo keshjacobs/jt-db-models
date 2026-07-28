@@ -10,6 +10,8 @@ export interface IChat extends Document {
     }[];
     idemKey: string;
     groupRequestId?: any;
+    groupTitle?: string;
+    groupImage?: string;
     lastMessage: {
         content: string;
         sender: IUser;

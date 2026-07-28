@@ -50,6 +50,8 @@ const ChatSchema = new mongoose_1.Schema({
         ref: "ChatRequest",
         required: false,
     },
+    groupTitle: { type: String, required: false },
+    groupImage: { type: String, required: false },
     lastMessage: {
         content: String,
         sender: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
