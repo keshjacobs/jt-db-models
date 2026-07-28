@@ -13,6 +13,8 @@ export interface IChat extends Document {
   }[];
   idemKey: string;
   groupRequestId?: any;
+  groupTitle?: string;
+  groupImage?: string;
   lastMessage: {
     content: string;
     sender: IUser;
@@ -39,6 +41,8 @@ const ChatSchema = new Schema(
       ref: "ChatRequest",
       required: false,
     },
+    groupTitle: { type: String, required: false },
+    groupImage: { type: String, required: false },
     lastMessage: {
       content: String,
       sender: { type: Schema.Types.ObjectId, ref: "Users" },
