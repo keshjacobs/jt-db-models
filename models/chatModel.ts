@@ -26,7 +26,7 @@ export interface IChat extends Document {
 
 const ChatSchema = new Schema(
   {
-    roomType: { type: String, enum: ["Private", "Group"], default: "Group" },
+    roomType: { type: String, enum: ["Private", "Group"], default: "Private" },
     photo: { type: String },
     members: [
       {
