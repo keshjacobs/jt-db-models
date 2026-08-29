@@ -10,4 +10,6 @@ var NotificationEvents;
     NotificationEvents["mention"] = "mention";
     NotificationEvents["chatRequest"] = "chatRequest";
     NotificationEvents["chat"] = "chat";
+    NotificationEvents["repliesMention"] = "replies_mention";
+    NotificationEvents["repliesLike"] = "replies_like";
 })(NotificationEvents || (exports.NotificationEvents = NotificationEvents = {}));
