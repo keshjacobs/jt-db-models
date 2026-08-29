@@ -5,5 +5,7 @@ export declare enum NotificationEvents {
     subscription = "subscription",
     mention = "mention",
     chatRequest = "chatRequest",
-    chat = "chat"
+    chat = "chat",
+    repliesMention = "replies_mention",
+    repliesLike = "replies_like"
 }
