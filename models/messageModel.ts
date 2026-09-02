@@ -49,6 +49,15 @@ export interface IMessage extends Document {
   currentEmoji: string; // populated from hour 6 onwards
   replyTo?: IMessage;
   expiresAt: Date;
+  // Speech-to-text — free first-3-seconds/first-7-words preview, generated
+  // automatically; `transcript` is the full text, unlocked with wallet
+  // points (see getTranscriptionCost) unless there was nothing left to
+  // unlock, in which case it's auto-filled for free alongside the preview.
+  previewTranscript?: string;
+  transcript?: string;
+  transcribedAt?: Date;
+  transcribedBy?: any; // ref Users — who paid to unlock it (unset for auto-fills)
+  ttsText?: string; // original synthesis input for isTTS messages
   createdAt: Date;
   updatedAt: Date;
 }
@@ -79,6 +88,11 @@ const MessageSchema: Schema = new Schema(
     currentEmoji: { type: String, default: MESSAGE_EMOJIS[0] },
     replyTo: { type: Schema.Types.ObjectId, ref: "Messages", default: null },
     expiresAt: { type: Date },
+    previewTranscript: { type: String },
+    transcript: { type: String },
+    transcribedAt: { type: Date },
+    transcribedBy: { type: Schema.Types.ObjectId, ref: "Users" },
+    ttsText: { type: String },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields
