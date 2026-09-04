@@ -43,6 +43,7 @@ export enum ActivityType {
   CHAT_REQUEST_REJECTED = "chat_request_rejected",
   MESSAGE_SENT = "message_sent",
   MESSAGE_PLAYED = "message_played",
+  MESSAGE_TRANSCRIBED = "message_transcribed",
 
   // Search
   VIEW_EXPLORE = "view_explore",

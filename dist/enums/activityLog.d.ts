@@ -31,6 +31,7 @@ export declare enum ActivityType {
     CHAT_REQUEST_REJECTED = "chat_request_rejected",
     MESSAGE_SENT = "message_sent",
     MESSAGE_PLAYED = "message_played",
+    MESSAGE_TRANSCRIBED = "message_transcribed",
     VIEW_EXPLORE = "view_explore",
     SEARCH = "search",
     BADGE_CLICK = "badge_click",

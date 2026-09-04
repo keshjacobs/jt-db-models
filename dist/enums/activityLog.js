@@ -42,6 +42,7 @@ var ActivityType;
     ActivityType["CHAT_REQUEST_REJECTED"] = "chat_request_rejected";
     ActivityType["MESSAGE_SENT"] = "message_sent";
     ActivityType["MESSAGE_PLAYED"] = "message_played";
+    ActivityType["MESSAGE_TRANSCRIBED"] = "message_transcribed";
     // Search
     ActivityType["VIEW_EXPLORE"] = "view_explore";
     ActivityType["SEARCH"] = "search";
