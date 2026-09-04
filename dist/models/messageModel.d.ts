@@ -27,6 +27,11 @@ export interface IMessage extends Document {
     currentEmoji: string;
     replyTo?: IMessage;
     expiresAt: Date;
+    previewTranscript?: string;
+    transcript?: string;
+    transcribedAt?: Date;
+    transcribedBy?: any;
+    ttsText?: string;
     createdAt: Date;
     updatedAt: Date;
 }
