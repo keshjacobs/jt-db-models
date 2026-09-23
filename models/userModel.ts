@@ -52,6 +52,7 @@ export interface IUser extends Document {
   status: number;
   referralCode?: string;
   referredBy?: Types.ObjectId;
+  referralRewardedUntil?: Date | null;
   lastActive: Date;
 }
 
@@ -138,6 +139,8 @@ const UserSchema: Schema = new Schema(
       ref: "User",
       default: null,
     },
+    // createdAt of the latest cast by this user the referrer has already been rewarded for.
+    referralRewardedUntil: { type: Date, default: null },
     lastActive: { type: Date, default: Date.now, index: true },
   },
   {
