@@ -127,6 +127,8 @@ const UserSchema = new mongoose_1.Schema({
         ref: "User",
         default: null,
     },
+    // createdAt of the latest cast by this user the referrer has already been rewarded for.
+    referralRewardedUntil: { type: Date, default: null },
     lastActive: { type: Date, default: Date.now, index: true },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
