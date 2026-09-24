@@ -48,6 +48,7 @@ export interface IUser extends Document {
     status: number;
     referralCode?: string;
     referredBy?: Types.ObjectId;
+    referralRewardedUntil?: Date | null;
     lastActive: Date;
 }
 declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser> & IUser & Required<{
