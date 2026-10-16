@@ -14,6 +14,8 @@ export { default as PodcastAlbum } from "./models/podcastAlbum";
 export { default as Message } from "./models/messageModel";
 export { default as ChatRequests } from "./models/chatRequestModel";
 export { default as ActivityLog } from "./models/activityLogModel";
+export { default as AnonymousCastTracker } from "./models/anonymousCastTrackerModel";
+export { default as AnonymousCastReach } from "./models/anonymousCastReachModel";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -32,6 +34,11 @@ export { IPodcastAlbum } from "./models/podcastAlbum";
 export { IMessage } from "./models/messageModel";
 export { IChatRequests } from "./models/chatRequestModel";
 export { IActivityLog } from "./models/activityLogModel";
+export {
+	IAnonymousCastTracker,
+	IAnonymousReachPurchase,
+} from "./models/anonymousCastTrackerModel";
+export { IAnonymousCastReach } from "./models/anonymousCastReachModel";
 
 // Constants
 export { MESSAGE_EMOJIS } from "./models/messageModel";

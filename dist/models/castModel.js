@@ -63,6 +63,8 @@ const CastSchema = new mongoose_1.Schema({
     podcastAlbum: { type: mongoose_1.Schema.Types.ObjectId, ref: "PodcastAlbums" },
     isSaved: { type: Boolean, default: false },
     mentions: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users", default: [] }],
+    // Anonymous cast: caster is hidden from viewers; paid reach is tracked in AnonymousCastTrackers
+    isAnonymous: { type: Boolean, default: false, index: true },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
