@@ -29,6 +29,7 @@ export interface ICast extends Document {
 	podcastAlbum: IPodcastAlbum;
 	isSaved: boolean;
 	mentions: any[];
+	isAnonymous: boolean;
 }
 
 const CastSchema: Schema = new Schema(
@@ -61,6 +62,8 @@ const CastSchema: Schema = new Schema(
 		podcastAlbum: { type: Schema.Types.ObjectId, ref: "PodcastAlbums" },
 		isSaved: { type: Boolean, default: false },
 		mentions: [{ type: Schema.Types.ObjectId, ref: "Users", default: [] }],
+		// Anonymous cast: caster is hidden from viewers; paid reach is tracked in AnonymousCastTrackers
+		isAnonymous: { type: Boolean, default: false, index: true },
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
