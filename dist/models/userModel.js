@@ -36,6 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TTP_VOICE_NAMES = exports.TTP_GENDERS = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const badge_1 = require("../enums/badge");
+const admin_1 = require("../enums/admin");
 var TTP_GENDERS;
 (function (TTP_GENDERS) {
     TTP_GENDERS["male"] = "male";
@@ -130,6 +131,24 @@ const UserSchema = new mongoose_1.Schema({
     // createdAt of the latest cast by this user the referrer has already been rewarded for.
     referralRewardedUntil: { type: Date, default: null },
     lastActive: { type: Date, default: Date.now, index: true },
+    // ---- Admin console ----
+    // `admin` (boolean) above is legacy; `role` is the source of truth.
+    role: {
+        type: String,
+        enum: Object.values(admin_1.UserRoles),
+        default: admin_1.UserRoles.user,
+        index: true,
+    },
+    // Moderation state. The numeric `status` field is legacy and left untouched.
+    accountStatus: {
+        type: String,
+        enum: Object.values(admin_1.AccountStatus),
+        default: admin_1.AccountStatus.active,
+        index: true,
+    },
+    statusReason: { type: String },
+    statusUpdatedAt: { type: Date },
+    statusUpdatedBy: { type: mongoose_1.default.Schema.Types.ObjectId, ref: "Users" },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });

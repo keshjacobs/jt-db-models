@@ -22,6 +22,10 @@ export interface IChat extends Document {
     createdAt: Date;
   };
   last_modified: string;
+  status: string; // ChatRoomStatus
+  dissolvedAt?: Date;
+  dissolvedBy?: mongoose.Types.ObjectId;
+  dissolveReason?: string;
 }
 
 const ChatSchema = new Schema(
@@ -50,6 +54,16 @@ const ChatSchema = new Schema(
       createdAt: Date,
     },
     last_modified: { type: Date, default: Date.now },
+    // Admin moderation
+    status: {
+      type: String,
+      enum: ["active", "dissolved"],
+      default: "active",
+      index: true,
+    },
+    dissolvedAt: { type: Date },
+    dissolvedBy: { type: Schema.Types.ObjectId, ref: "Users" },
+    dissolveReason: { type: String },
   },
   {
     timestamps: true,
