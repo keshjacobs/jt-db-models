@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
 import { BadgeLevels } from "../enums/badge";
+import { AccountStatus, UserRoles } from "../enums/admin";
 
 export enum TTP_GENDERS {
   male = "male",
@@ -54,6 +55,12 @@ export interface IUser extends Document {
   referredBy?: Types.ObjectId;
   referralRewardedUntil?: Date | null;
   lastActive: Date;
+  // Admin console
+  role: UserRoles;
+  accountStatus: AccountStatus;
+  statusReason?: string;
+  statusUpdatedAt?: Date;
+  statusUpdatedBy?: Types.ObjectId;
 }
 
 const UserSchema: Schema = new Schema(
@@ -142,6 +149,25 @@ const UserSchema: Schema = new Schema(
     // createdAt of the latest cast by this user the referrer has already been rewarded for.
     referralRewardedUntil: { type: Date, default: null },
     lastActive: { type: Date, default: Date.now, index: true },
+
+    // ---- Admin console ----
+    // `admin` (boolean) above is legacy; `role` is the source of truth.
+    role: {
+      type: String,
+      enum: Object.values(UserRoles),
+      default: UserRoles.user,
+      index: true,
+    },
+    // Moderation state. The numeric `status` field is legacy and left untouched.
+    accountStatus: {
+      type: String,
+      enum: Object.values(AccountStatus),
+      default: AccountStatus.active,
+      index: true,
+    },
+    statusReason: { type: String },
+    statusUpdatedAt: { type: Date },
+    statusUpdatedBy: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields

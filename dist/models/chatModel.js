@@ -59,6 +59,16 @@ const ChatSchema = new mongoose_1.Schema({
         createdAt: Date,
     },
     last_modified: { type: Date, default: Date.now },
+    // Admin moderation
+    status: {
+        type: String,
+        enum: ["active", "dissolved"],
+        default: "active",
+        index: true,
+    },
+    dissolvedAt: { type: Date },
+    dissolvedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+    dissolveReason: { type: String },
 }, {
     timestamps: true,
 });

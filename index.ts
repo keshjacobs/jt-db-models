@@ -16,6 +16,9 @@ export { default as ChatRequests } from "./models/chatRequestModel";
 export { default as ActivityLog } from "./models/activityLogModel";
 export { default as AnonymousCastTracker } from "./models/anonymousCastTrackerModel";
 export { default as AnonymousCastReach } from "./models/anonymousCastReachModel";
+export { default as AdminAuditLog } from "./models/adminAuditLogModel";
+export { default as AppSetting } from "./models/appSettingModel";
+export { default as FeatureFlag } from "./models/featureFlagModel";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -39,6 +42,9 @@ export {
 	IAnonymousReachPurchase,
 } from "./models/anonymousCastTrackerModel";
 export { IAnonymousCastReach } from "./models/anonymousCastReachModel";
+export { IAdminAuditLog } from "./models/adminAuditLogModel";
+export { IAppSetting, APP_SETTINGS_KEY } from "./models/appSettingModel";
+export { IFeatureFlag } from "./models/featureFlagModel";
 
 // Constants
 export { MESSAGE_EMOJIS } from "./models/messageModel";
@@ -46,3 +52,12 @@ export { MESSAGE_EMOJIS } from "./models/messageModel";
 // Enums
 export { TTP_GENDERS, TTP_VOICE_NAMES } from "./models/userModel";
 export { ActivityType, ActivityTargetModel } from "./enums/activityLog";
+export {
+	UserRoles,
+	ADMIN_ROLES,
+	AccountStatus,
+	CastModerationStatus,
+	ChatRoomStatus,
+	AdminTargetType,
+} from "./enums/admin";
+export { ANY_MODERATION_STATUS } from "./models/castModel";

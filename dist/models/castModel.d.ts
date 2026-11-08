@@ -1,5 +1,6 @@
 import mongoose, { Document } from "mongoose";
 import { IPodcastAlbum } from "./podcastAlbum";
+import { CastModerationStatus } from "../enums/admin";
 export interface ICast extends Document {
     title: string;
     cast: string;
@@ -29,7 +30,15 @@ export interface ICast extends Document {
     isSaved: boolean;
     mentions: any[];
     isAnonymous: boolean;
+    moderationStatus: CastModerationStatus;
+    moderationReason?: string;
+    moderatedBy?: any;
+    moderatedAt?: Date;
 }
+/** Pass as `moderationStatus` in a filter to see casts in every state (admin only). */
+export declare const ANY_MODERATION_STATUS: {
+    $in: (CastModerationStatus | null)[];
+};
 declare const Cast: mongoose.Model<ICast, {}, {}, {}, mongoose.Document<unknown, {}, ICast> & ICast & Required<{
     _id: unknown;
 }>, any>;

@@ -1,4 +1,5 @@
 import mongoose, { Document, Types } from "mongoose";
+import { AccountStatus, UserRoles } from "../enums/admin";
 export declare enum TTP_GENDERS {
     male = "male",
     female = "female"
@@ -50,6 +51,11 @@ export interface IUser extends Document {
     referredBy?: Types.ObjectId;
     referralRewardedUntil?: Date | null;
     lastActive: Date;
+    role: UserRoles;
+    accountStatus: AccountStatus;
+    statusReason?: string;
+    statusUpdatedAt?: Date;
+    statusUpdatedBy?: Types.ObjectId;
 }
 declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser> & IUser & Required<{
     _id: unknown;
