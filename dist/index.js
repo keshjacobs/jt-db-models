@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ActivityTargetModel = exports.ActivityType = exports.TTP_VOICE_NAMES = exports.TTP_GENDERS = exports.MESSAGE_EMOJIS = exports.AnonymousCastReach = exports.AnonymousCastTracker = exports.ActivityLog = exports.ChatRequests = exports.Message = exports.PodcastAlbum = exports.Badge = exports.BlockedUsers = exports.UserReports = exports.UserDevices = exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
+exports.WithdrawalStatus = exports.ActivityTargetModel = exports.ActivityType = exports.TTP_VOICE_NAMES = exports.TTP_GENDERS = exports.MESSAGE_EMOJIS = exports.Withdrawal = exports.PointsCampaign = exports.AnonymousCastReach = exports.AnonymousCastTracker = exports.ActivityLog = exports.ChatRequests = exports.Message = exports.PodcastAlbum = exports.Badge = exports.BlockedUsers = exports.UserReports = exports.UserDevices = exports.BlacklistedCasts = exports.Subscriptions = exports.Chat = exports.CastListeners = exports.CastLikes = exports.Notification = exports.Cast = exports.User = void 0;
 var userModel_1 = require("./models/userModel");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return __importDefault(userModel_1).default; } });
 var castModel_1 = require("./models/castModel");
@@ -40,6 +40,10 @@ var anonymousCastTrackerModel_1 = require("./models/anonymousCastTrackerModel");
 Object.defineProperty(exports, "AnonymousCastTracker", { enumerable: true, get: function () { return __importDefault(anonymousCastTrackerModel_1).default; } });
 var anonymousCastReachModel_1 = require("./models/anonymousCastReachModel");
 Object.defineProperty(exports, "AnonymousCastReach", { enumerable: true, get: function () { return __importDefault(anonymousCastReachModel_1).default; } });
+var pointsCampaignModel_1 = require("./models/pointsCampaignModel");
+Object.defineProperty(exports, "PointsCampaign", { enumerable: true, get: function () { return __importDefault(pointsCampaignModel_1).default; } });
+var withdrawalModel_1 = require("./models/withdrawalModel");
+Object.defineProperty(exports, "Withdrawal", { enumerable: true, get: function () { return __importDefault(withdrawalModel_1).default; } });
 // Constants
 var messageModel_2 = require("./models/messageModel");
 Object.defineProperty(exports, "MESSAGE_EMOJIS", { enumerable: true, get: function () { return messageModel_2.MESSAGE_EMOJIS; } });
@@ -50,3 +54,5 @@ Object.defineProperty(exports, "TTP_VOICE_NAMES", { enumerable: true, get: funct
 var activityLog_1 = require("./enums/activityLog");
 Object.defineProperty(exports, "ActivityType", { enumerable: true, get: function () { return activityLog_1.ActivityType; } });
 Object.defineProperty(exports, "ActivityTargetModel", { enumerable: true, get: function () { return activityLog_1.ActivityTargetModel; } });
+var withdrawal_1 = require("./enums/withdrawal");
+Object.defineProperty(exports, "WithdrawalStatus", { enumerable: true, get: function () { return withdrawal_1.WithdrawalStatus; } });

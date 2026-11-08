@@ -16,6 +16,8 @@ export { default as ChatRequests } from "./models/chatRequestModel";
 export { default as ActivityLog } from "./models/activityLogModel";
 export { default as AnonymousCastTracker } from "./models/anonymousCastTrackerModel";
 export { default as AnonymousCastReach } from "./models/anonymousCastReachModel";
+export { default as PointsCampaign } from "./models/pointsCampaignModel";
+export { default as Withdrawal } from "./models/withdrawalModel";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -39,6 +41,8 @@ export {
 	IAnonymousReachPurchase,
 } from "./models/anonymousCastTrackerModel";
 export { IAnonymousCastReach } from "./models/anonymousCastReachModel";
+export { IPointsCampaign } from "./models/pointsCampaignModel";
+export { IWithdrawal } from "./models/withdrawalModel";
 
 // Constants
 export { MESSAGE_EMOJIS } from "./models/messageModel";
@@ -46,3 +50,4 @@ export { MESSAGE_EMOJIS } from "./models/messageModel";
 // Enums
 export { TTP_GENDERS, TTP_VOICE_NAMES } from "./models/userModel";
 export { ActivityType, ActivityTargetModel } from "./enums/activityLog";
+export { WithdrawalStatus } from "./enums/withdrawal";
