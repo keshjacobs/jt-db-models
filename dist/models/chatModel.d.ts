@@ -19,6 +19,10 @@ export interface IChat extends Document {
         createdAt: Date;
     };
     last_modified: string;
+    status: string;
+    dissolvedAt?: Date;
+    dissolvedBy?: mongoose.Types.ObjectId;
+    dissolveReason?: string;
 }
 declare const Chat: mongoose.Model<IChat, {}, {}, {}, mongoose.Document<unknown, {}, IChat> & IChat & Required<{
     _id: unknown;

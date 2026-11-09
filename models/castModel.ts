@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { IPodcastAlbum } from "./podcastAlbum";
+import { CastModerationStatus } from "../enums/admin";
 
 export interface ICast extends Document {
 	title: string;
@@ -30,6 +31,10 @@ export interface ICast extends Document {
 	isSaved: boolean;
 	mentions: any[];
 	isAnonymous: boolean;
+	moderationStatus: CastModerationStatus;
+	moderationReason?: string;
+	moderatedBy?: any;
+	moderatedAt?: Date;
 }
 
 const CastSchema: Schema = new Schema(
@@ -64,6 +69,16 @@ const CastSchema: Schema = new Schema(
 		mentions: [{ type: Schema.Types.ObjectId, ref: "Users", default: [] }],
 		// Anonymous cast: caster is hidden from viewers; paid reach is tracked in AnonymousCastTrackers
 		isAnonymous: { type: Boolean, default: false, index: true },
+		// Admin moderation. Existing docs have no value, which counts as "live".
+		moderationStatus: {
+			type: String,
+			enum: Object.values(CastModerationStatus),
+			default: CastModerationStatus.live,
+			index: true,
+		},
+		moderationReason: { type: String },
+		moderatedBy: { type: Schema.Types.ObjectId, ref: "Users" },
+		moderatedAt: { type: Date },
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
@@ -72,6 +87,53 @@ const CastSchema: Schema = new Schema(
 
 // Add index to optimize lookups
 CastSchema.index({ createdAt: 1 });
+
+/* ------------------------------------------------------------------
+ * Keep hidden/removed casts out of every feed, list and search.
+ *
+ * Applies to find(), countDocuments() and aggregate() on Casts, so the
+ * timeline, explore, profile and search queries all respect moderation
+ * without each one needing its own filter.
+ *
+ * It deliberately does NOT apply when:
+ *  - the query targets specific _ids (findById, populate, $in lookups),
+ *    so existing references to a moderated cast don't turn into nulls;
+ *  - the query already filters on moderationStatus. Admin code uses this
+ *    as the opt-out: `{ moderationStatus: ANY_MODERATION_STATUS }`.
+ * ------------------------------------------------------------------ */
+const HIDDEN_FROM_FEEDS = [
+	CastModerationStatus.hidden,
+	CastModerationStatus.removed,
+];
+
+/** Pass as `moderationStatus` in a filter to see casts in every state (admin only). */
+export const ANY_MODERATION_STATUS = {
+	$in: [...Object.values(CastModerationStatus), null],
+};
+
+const skipsModerationFilter = (filter: any) =>
+	!!filter &&
+	(Object.prototype.hasOwnProperty.call(filter, "_id") ||
+		Object.prototype.hasOwnProperty.call(filter, "moderationStatus"));
+
+CastSchema.pre(["find", "countDocuments"], function () {
+	if (skipsModerationFilter(this.getFilter())) return;
+	this.where({ moderationStatus: { $nin: HIDDEN_FROM_FEEDS } });
+});
+
+CastSchema.pre("aggregate", function () {
+	const pipeline = this.pipeline() as any[];
+	const first = pipeline[0];
+	if (first?.$match && skipsModerationFilter(first.$match)) return;
+
+	const stage = { $match: { moderationStatus: { $nin: HIDDEN_FROM_FEEDS } } };
+	// These stages must stay first in the pipeline.
+	if (first && (first.$geoNear || first.$search || first.$searchMeta || first.$vectorSearch)) {
+		pipeline.splice(1, 0, stage);
+	} else {
+		pipeline.unshift(stage);
+	}
+});
 
 CastSchema.set("toJSON", { virtuals: true });
 
