@@ -48,6 +48,9 @@ var ActivityType;
     ActivityType["SEARCH"] = "search";
     // Badge / wallet
     ActivityType["BADGE_CLICK"] = "badge_click";
+    ActivityType["WITHDRAWAL_REQUEST"] = "withdrawal_request";
+    ActivityType["WITHDRAWAL_PAID"] = "withdrawal_paid";
+    ActivityType["WITHDRAWAL_REJECTED"] = "withdrawal_rejected";
     // Generic presence
     ActivityType["APP_OPEN"] = "app_open";
     ActivityType["HEARTBEAT"] = "heartbeat";
@@ -61,4 +64,5 @@ var ActivityTargetModel;
     ActivityTargetModel["Chats"] = "Chats";
     ActivityTargetModel["PodcastAlbums"] = "PodcastAlbums";
     ActivityTargetModel["ChatRequests"] = "ChatRequests";
+    ActivityTargetModel["Withdrawals"] = "Withdrawals";
 })(ActivityTargetModel || (exports.ActivityTargetModel = ActivityTargetModel = {}));
