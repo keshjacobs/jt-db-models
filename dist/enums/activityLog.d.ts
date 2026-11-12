@@ -35,6 +35,9 @@ export declare enum ActivityType {
     VIEW_EXPLORE = "view_explore",
     SEARCH = "search",
     BADGE_CLICK = "badge_click",
+    WITHDRAWAL_REQUEST = "withdrawal_request",
+    WITHDRAWAL_PAID = "withdrawal_paid",
+    WITHDRAWAL_REJECTED = "withdrawal_rejected",
     APP_OPEN = "app_open",
     HEARTBEAT = "heartbeat"
 }
@@ -44,5 +47,6 @@ export declare enum ActivityTargetModel {
     Messages = "Messages",
     Chats = "Chats",
     PodcastAlbums = "PodcastAlbums",
-    ChatRequests = "ChatRequests"
+    ChatRequests = "ChatRequests",
+    Withdrawals = "Withdrawals"
 }

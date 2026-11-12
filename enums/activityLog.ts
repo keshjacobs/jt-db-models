@@ -51,6 +51,9 @@ export enum ActivityType {
 
   // Badge / wallet
   BADGE_CLICK = "badge_click",
+  WITHDRAWAL_REQUEST = "withdrawal_request",
+  WITHDRAWAL_PAID = "withdrawal_paid",
+  WITHDRAWAL_REJECTED = "withdrawal_rejected",
 
   // Generic presence
   APP_OPEN = "app_open",
@@ -65,4 +68,5 @@ export enum ActivityTargetModel {
   Chats = "Chats",
   PodcastAlbums = "PodcastAlbums",
   ChatRequests = "ChatRequests",
+  Withdrawals = "Withdrawals",
 }
