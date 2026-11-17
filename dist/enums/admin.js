@@ -47,4 +47,6 @@ var AdminTargetType;
     AdminTargetType["notification"] = "notification";
     AdminTargetType["badge"] = "badge";
     AdminTargetType["banner"] = "banner";
+    AdminTargetType["appeal"] = "appeal";
+    AdminTargetType["verification"] = "verification";
 })(AdminTargetType || (exports.AdminTargetType = AdminTargetType = {}));

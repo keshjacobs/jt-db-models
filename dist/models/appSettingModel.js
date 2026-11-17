@@ -33,11 +33,19 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.APP_SETTINGS_KEY = void 0;
+exports.DEFAULT_POINT_RULES = exports.APP_SETTINGS_KEY = void 0;
 // models/appSettingModel.ts
 // Remote app config. Single document keyed "app" so the mobile app can fetch it in one read.
 const mongoose_1 = __importStar(require("mongoose"));
+const growth_1 = require("../enums/growth");
 exports.APP_SETTINGS_KEY = "app";
+exports.DEFAULT_POINT_RULES = {
+    perListen: 0,
+    perCast: 0,
+    perAdWatched: 2,
+    perReferral: 10,
+    dailyCap: 40,
+};
 const AppSettingSchema = new mongoose_1.Schema({
     key: { type: String, required: true, unique: true, default: exports.APP_SETTINGS_KEY },
     minimumVersion: {
@@ -58,6 +66,10 @@ const AppSettingSchema = new mongoose_1.Schema({
     maxCastDuration: { type: Number, default: 300, min: 1 },
     maxGroupMembers: { type: Number, default: 64, min: 2 },
     reportAutoHideThreshold: { type: Number, default: 10, min: 1 },
+    // Badge points needed per level (admin-editable; defaults mirror the BadgePoints enum).
+    badgeThresholds: Object.fromEntries(Object.entries(growth_1.DEFAULT_BADGE_THRESHOLDS).map(([level, pts]) => [level, { type: Number, default: pts, min: 0 }])),
+    // How users earn badge points.
+    pointRules: Object.fromEntries(Object.entries(exports.DEFAULT_POINT_RULES).map(([k, v]) => [k, { type: Number, default: v, min: 0 }])),
     updatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
 }, { timestamps: true });
 AppSettingSchema.set("toJSON", { virtuals: true });

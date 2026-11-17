@@ -149,6 +149,20 @@ const UserSchema = new mongoose_1.Schema({
     statusReason: { type: String },
     statusUpdatedAt: { type: Date },
     statusUpdatedBy: { type: mongoose_1.default.Schema.Types.ObjectId, ref: "Users" },
+    // Set while suspended; jt-identity reactivates the account once it passes.
+    suspendedUntil: { type: Date, index: { sparse: true } },
+    // Verified creator checkmark, granted through an approved VerificationRequest.
+    // NB: `verified` above means the account's email/phone is verified, not this.
+    creatorVerified: { type: Boolean, default: false, index: true },
+    creatorVerifiedAt: { type: Date },
+    // Times a moderator warned this user from a report ("Warn owner").
+    warnings: { type: Number, default: 0 },
+    lastWarnedAt: { type: Date },
+    // Listen/cast badge points earned on `day` (UTC), checked against pointRules.dailyCap.
+    pointsToday: {
+        day: { type: String },
+        earned: { type: Number, default: 0 },
+    },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });

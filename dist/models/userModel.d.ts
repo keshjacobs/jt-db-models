@@ -56,6 +56,15 @@ export interface IUser extends Document {
     statusReason?: string;
     statusUpdatedAt?: Date;
     statusUpdatedBy?: Types.ObjectId;
+    suspendedUntil?: Date;
+    creatorVerified?: boolean;
+    creatorVerifiedAt?: Date;
+    warnings?: number;
+    lastWarnedAt?: Date;
+    pointsToday?: {
+        day: string;
+        earned: number;
+    };
 }
 declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser> & IUser & Required<{
     _id: unknown;

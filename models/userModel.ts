@@ -61,6 +61,16 @@ export interface IUser extends Document {
   statusReason?: string;
   statusUpdatedAt?: Date;
   statusUpdatedBy?: Types.ObjectId;
+  // When a suspension ends (lifted automatically by jt-identity's job)
+  suspendedUntil?: Date;
+  // Verified creator checkmark (separate from `verified`, which means email/phone verified)
+  creatorVerified?: boolean;
+  creatorVerifiedAt?: Date;
+  // Moderation warnings ("Warn owner" on a report)
+  warnings?: number;
+  lastWarnedAt?: Date;
+  // Listen/cast badge points earned today, for the daily cap (day = UTC "YYYY-MM-DD")
+  pointsToday?: { day: string; earned: number };
 }
 
 const UserSchema: Schema = new Schema(
@@ -168,6 +178,20 @@ const UserSchema: Schema = new Schema(
     statusReason: { type: String },
     statusUpdatedAt: { type: Date },
     statusUpdatedBy: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
+    // Set while suspended; jt-identity reactivates the account once it passes.
+    suspendedUntil: { type: Date, index: { sparse: true } },
+    // Verified creator checkmark, granted through an approved VerificationRequest.
+    // NB: `verified` above means the account's email/phone is verified, not this.
+    creatorVerified: { type: Boolean, default: false, index: true },
+    creatorVerifiedAt: { type: Date },
+    // Times a moderator warned this user from a report ("Warn owner").
+    warnings: { type: Number, default: 0 },
+    lastWarnedAt: { type: Date },
+    // Listen/cast badge points earned on `day` (UTC), checked against pointRules.dailyCap.
+    pointsToday: {
+      day: { type: String },
+      earned: { type: Number, default: 0 },
+    },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields

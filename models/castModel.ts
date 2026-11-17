@@ -35,6 +35,10 @@ export interface ICast extends Document {
 	moderationReason?: string;
 	moderatedBy?: any;
 	moderatedAt?: Date;
+	featured?: boolean;
+	featuredRank?: number;
+	featuredAt?: Date;
+	featuredBy?: any;
 }
 
 const CastSchema: Schema = new Schema(
@@ -79,6 +83,11 @@ const CastSchema: Schema = new Schema(
 		moderationReason: { type: String },
 		moderatedBy: { type: Schema.Types.ObjectId, ref: "Users" },
 		moderatedAt: { type: Date },
+		// Admin curation for the Explore tab. Lower rank shows first; top 5 go in the carousel.
+		featured: { type: Boolean, default: false, index: true },
+		featuredRank: { type: Number },
+		featuredAt: { type: Date },
+		featuredBy: { type: Schema.Types.ObjectId, ref: "Users" },
 	},
 	{
 		timestamps: true, // Adds createdAt and updatedAt fields
