@@ -5,6 +5,8 @@ export declare enum ActivityType {
     PASSWORD_RESET_REQUEST = "password_reset_request",
     PASSWORD_RESET_COMPLETE = "password_reset_complete",
     EMAIL_VERIFY = "email_verify",
+    PHONE_CODE_SEND = "phone_code_send",
+    PHONE_VERIFY = "phone_verify",
     PROFILE_UPDATE = "profile_update",
     PHOTO_UPDATE = "photo_update",
     PUSHTOKEN_UPDATE = "pushtoken_update",
@@ -30,6 +32,7 @@ export declare enum ActivityType {
     CHAT_REQUEST_ACCEPTED = "chat_request_accepted",
     CHAT_REQUEST_REJECTED = "chat_request_rejected",
     MESSAGE_SENT = "message_sent",
+    POINTS_SENT = "points_sent",
     MESSAGE_PLAYED = "message_played",
     MESSAGE_TRANSCRIBED = "message_transcribed",
     VIEW_EXPLORE = "view_explore",
@@ -48,5 +51,6 @@ export declare enum ActivityTargetModel {
     Chats = "Chats",
     PodcastAlbums = "PodcastAlbums",
     ChatRequests = "ChatRequests",
-    Withdrawals = "Withdrawals"
+    Withdrawals = "Withdrawals",
+    PointTransfers = "PointTransfers"
 }

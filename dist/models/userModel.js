@@ -47,6 +47,18 @@ var TTP_VOICE_NAMES;
     TTP_VOICE_NAMES["male"] = "en-GB-Neural2-O";
     TTP_VOICE_NAMES["female"] = "en-GB-Neural2-N";
 })(TTP_VOICE_NAMES || (exports.TTP_VOICE_NAMES = TTP_VOICE_NAMES = {}));
+// Pending phone OTP. Never returned with the user (select: false on the path below).
+const PhoneCodeSchema = new mongoose_1.Schema({
+    codeHash: { type: String, required: true },
+    // E.164 number the code was sent to; becomes `verifiedPhone` on success.
+    phone: { type: String, required: true },
+    expiresAt: { type: Date, required: true },
+    attempts: { type: Number, default: 0 },
+    lastSentAt: { type: Date, required: true },
+    // Rolling send limit: sends counted since `sendWindowStart`.
+    sendCount: { type: Number, default: 1 },
+    sendWindowStart: { type: Date, required: true },
+}, { _id: false });
 const UserSchema = new mongoose_1.Schema({
     t_id: { type: String, required: true },
     photo: { type: String, default: "photo/default.png" },
@@ -130,6 +142,17 @@ const UserSchema = new mongoose_1.Schema({
     },
     // createdAt of the latest cast by this user the referrer has already been rewarded for.
     referralRewardedUntil: { type: Date, default: null },
+    // When the referrer was paid their signup reward for this user. The reward
+    // waits until this user verifies their phone, so null means "not paid yet".
+    referralSignupRewardedAt: { type: Date, default: null },
+    // Phone verification is optional, but points can't be spent or
+    // transferred until it's done.
+    phoneVerified: { type: Boolean, default: false, index: true },
+    phoneVerifiedAt: { type: Date, default: null },
+    // E.164 number, set only on successful verification. Unique so one number
+    // can verify only one account.
+    verifiedPhone: { type: String, unique: true, sparse: true },
+    phone_code: { type: PhoneCodeSchema, select: false, default: undefined },
     lastActive: { type: Date, default: Date.now, index: true },
     // ---- Admin console ----
     // `admin` (boolean) above is legacy; `role` is the source of truth.

@@ -11,6 +11,8 @@ var ActivityType;
     ActivityType["PASSWORD_RESET_REQUEST"] = "password_reset_request";
     ActivityType["PASSWORD_RESET_COMPLETE"] = "password_reset_complete";
     ActivityType["EMAIL_VERIFY"] = "email_verify";
+    ActivityType["PHONE_CODE_SEND"] = "phone_code_send";
+    ActivityType["PHONE_VERIFY"] = "phone_verify";
     // Profile
     ActivityType["PROFILE_UPDATE"] = "profile_update";
     ActivityType["PHOTO_UPDATE"] = "photo_update";
@@ -41,6 +43,7 @@ var ActivityType;
     ActivityType["CHAT_REQUEST_ACCEPTED"] = "chat_request_accepted";
     ActivityType["CHAT_REQUEST_REJECTED"] = "chat_request_rejected";
     ActivityType["MESSAGE_SENT"] = "message_sent";
+    ActivityType["POINTS_SENT"] = "points_sent";
     ActivityType["MESSAGE_PLAYED"] = "message_played";
     ActivityType["MESSAGE_TRANSCRIBED"] = "message_transcribed";
     // Search
@@ -65,4 +68,5 @@ var ActivityTargetModel;
     ActivityTargetModel["PodcastAlbums"] = "PodcastAlbums";
     ActivityTargetModel["ChatRequests"] = "ChatRequests";
     ActivityTargetModel["Withdrawals"] = "Withdrawals";
+    ActivityTargetModel["PointTransfers"] = "PointTransfers";
 })(ActivityTargetModel || (exports.ActivityTargetModel = ActivityTargetModel = {}));

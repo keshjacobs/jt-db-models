@@ -10,11 +10,13 @@ export interface IMessage extends Document {
     user: IUser;
     chatRoom: IChat;
     content: string;
-    type: "image" | "audio" | "video" | "link";
+    type: "image" | "audio" | "video" | "link" | "points";
     imageUrls?: string[];
     videoUrls?: string[];
     linkUrl?: string;
     videoDuration?: number;
+    pointsAmount?: number;
+    pointsRecipient?: IUser;
     listens: string[];
     duration: number;
     played: boolean;
