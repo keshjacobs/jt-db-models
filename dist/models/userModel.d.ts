@@ -47,15 +47,37 @@ export interface IUser extends Document {
     resetPasswordExpires?: Date;
     date_created: Date;
     status: number;
+    phoneVerified: boolean;
+    phoneVerifiedAt?: Date | null;
+    verifiedPhone?: string;
+    phone_code?: {
+        codeHash: string;
+        phone: string;
+        expiresAt: Date;
+        attempts: number;
+        lastSentAt: Date;
+        sendCount: number;
+        sendWindowStart: Date;
+    };
     referralCode?: string;
     referredBy?: Types.ObjectId;
     referralRewardedUntil?: Date | null;
+    referralSignupRewardedAt?: Date | null;
     lastActive: Date;
     role: UserRoles;
     accountStatus: AccountStatus;
     statusReason?: string;
     statusUpdatedAt?: Date;
     statusUpdatedBy?: Types.ObjectId;
+    suspendedUntil?: Date;
+    creatorVerified?: boolean;
+    creatorVerifiedAt?: Date;
+    warnings?: number;
+    lastWarnedAt?: Date;
+    pointsToday?: {
+        day: string;
+        earned: number;
+    };
 }
 declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser> & IUser & Required<{
     _id: unknown;

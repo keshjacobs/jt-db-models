@@ -35,5 +35,7 @@ export declare enum AdminTargetType {
     report = "report",
     notification = "notification",
     badge = "badge",
-    banner = "banner"
+    banner = "banner",
+    appeal = "appeal",
+    verification = "verification"
 }

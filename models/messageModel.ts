@@ -32,11 +32,14 @@ export interface IMessage extends Document {
   user: IUser;
   chatRoom: IChat;
   content: string;
-  type: "image" | "audio" | "video" | "link";
+  type: "image" | "audio" | "video" | "link" | "points";
   imageUrls?: string[];
   videoUrls?: string[];
   linkUrl?: string;
   videoDuration?: number;
+  // type "points": wallet points sent to `pointsRecipient` (see PointTransfer).
+  pointsAmount?: number;
+  pointsRecipient?: IUser;
   listens: string[];
   duration: number;
   played: boolean;
@@ -69,13 +72,15 @@ const MessageSchema: Schema = new Schema(
     content: { type: String },
     type: {
       type: String,
-      enum: ["image", "audio", "video", "link"],
+      enum: ["image", "audio", "video", "link", "points"],
       default: "audio",
     },
     imageUrls: [{ type: String }],
     videoUrls: [{ type: String }],
     videoDuration: { type: Number },
     linkUrl: { type: String },
+    pointsAmount: { type: Number },
+    pointsRecipient: { type: Schema.Types.ObjectId, ref: "Users" },
     listens: [{ type: String }],
     duration: { type: Number, default: 0 },
     played: { type: Boolean, default: false },
