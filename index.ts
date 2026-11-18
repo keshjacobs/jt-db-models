@@ -26,6 +26,7 @@ export { default as Appeal } from "./models/appealModel";
 export { default as VerificationRequest } from "./models/verificationRequestModel";
 export { default as Banner } from "./models/bannerModel";
 export { default as PushCampaign } from "./models/pushCampaignModel";
+export { default as PointTransfer } from "./models/pointTransferModel";
 
 //interfaces
 export { IUser } from "./models/userModel";
@@ -60,6 +61,7 @@ export { IAppeal } from "./models/appealModel";
 export { IVerificationRequest } from "./models/verificationRequestModel";
 export { IBanner } from "./models/bannerModel";
 export { IPushCampaign } from "./models/pushCampaignModel";
+export { IPointTransfer } from "./models/pointTransferModel";
 
 // Constants
 export { MESSAGE_EMOJIS } from "./models/messageModel";

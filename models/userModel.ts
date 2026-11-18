@@ -51,9 +51,22 @@ export interface IUser extends Document {
   resetPasswordExpires?: Date;
   date_created: Date;
   status: number;
+  phoneVerified: boolean;
+  phoneVerifiedAt?: Date | null;
+  verifiedPhone?: string;
+  phone_code?: {
+    codeHash: string;
+    phone: string;
+    expiresAt: Date;
+    attempts: number;
+    lastSentAt: Date;
+    sendCount: number;
+    sendWindowStart: Date;
+  };
   referralCode?: string;
   referredBy?: Types.ObjectId;
   referralRewardedUntil?: Date | null;
+  referralSignupRewardedAt?: Date | null;
   lastActive: Date;
   // Admin console
   role: UserRoles;
@@ -72,6 +85,22 @@ export interface IUser extends Document {
   // Listen/cast badge points earned today, for the daily cap (day = UTC "YYYY-MM-DD")
   pointsToday?: { day: string; earned: number };
 }
+
+// Pending phone OTP. Never returned with the user (select: false on the path below).
+const PhoneCodeSchema: Schema = new Schema(
+  {
+    codeHash: { type: String, required: true },
+    // E.164 number the code was sent to; becomes `verifiedPhone` on success.
+    phone: { type: String, required: true },
+    expiresAt: { type: Date, required: true },
+    attempts: { type: Number, default: 0 },
+    lastSentAt: { type: Date, required: true },
+    // Rolling send limit: sends counted since `sendWindowStart`.
+    sendCount: { type: Number, default: 1 },
+    sendWindowStart: { type: Date, required: true },
+  },
+  { _id: false },
+);
 
 const UserSchema: Schema = new Schema(
   {
@@ -158,6 +187,17 @@ const UserSchema: Schema = new Schema(
     },
     // createdAt of the latest cast by this user the referrer has already been rewarded for.
     referralRewardedUntil: { type: Date, default: null },
+    // When the referrer was paid their signup reward for this user. The reward
+    // waits until this user verifies their phone, so null means "not paid yet".
+    referralSignupRewardedAt: { type: Date, default: null },
+    // Phone verification is optional, but points can't be spent or
+    // transferred until it's done.
+    phoneVerified: { type: Boolean, default: false, index: true },
+    phoneVerifiedAt: { type: Date, default: null },
+    // E.164 number, set only on successful verification. Unique so one number
+    // can verify only one account.
+    verifiedPhone: { type: String, unique: true, sparse: true },
+    phone_code: { type: PhoneCodeSchema, select: false, default: undefined },
     lastActive: { type: Date, default: Date.now, index: true },
 
     // ---- Admin console ----

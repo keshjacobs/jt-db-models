@@ -47,9 +47,22 @@ export interface IUser extends Document {
     resetPasswordExpires?: Date;
     date_created: Date;
     status: number;
+    phoneVerified: boolean;
+    phoneVerifiedAt?: Date | null;
+    verifiedPhone?: string;
+    phone_code?: {
+        codeHash: string;
+        phone: string;
+        expiresAt: Date;
+        attempts: number;
+        lastSentAt: Date;
+        sendCount: number;
+        sendWindowStart: Date;
+    };
     referralCode?: string;
     referredBy?: Types.ObjectId;
     referralRewardedUntil?: Date | null;
+    referralSignupRewardedAt?: Date | null;
     lastActive: Date;
     role: UserRoles;
     accountStatus: AccountStatus;
