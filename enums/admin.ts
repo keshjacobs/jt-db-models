@@ -45,4 +45,6 @@ export enum AdminTargetType {
   notification = "notification",
   badge = "badge",
   banner = "banner",
+  appeal = "appeal",
+  verification = "verification",
 }

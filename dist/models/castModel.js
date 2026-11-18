@@ -77,6 +77,11 @@ const CastSchema = new mongoose_1.Schema({
     moderationReason: { type: String },
     moderatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     moderatedAt: { type: Date },
+    // Admin curation for the Explore tab. Lower rank shows first; top 5 go in the carousel.
+    featured: { type: Boolean, default: false, index: true },
+    featuredRank: { type: Number },
+    featuredAt: { type: Date },
+    featuredBy: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });

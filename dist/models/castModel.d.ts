@@ -34,6 +34,10 @@ export interface ICast extends Document {
     moderationReason?: string;
     moderatedBy?: any;
     moderatedAt?: Date;
+    featured?: boolean;
+    featuredRank?: number;
+    featuredAt?: Date;
+    featuredBy?: any;
 }
 /** Pass as `moderationStatus` in a filter to see casts in every state (admin only). */
 export declare const ANY_MODERATION_STATUS: {
