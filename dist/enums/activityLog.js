@@ -29,6 +29,7 @@ var ActivityType;
     ActivityType["CAST_UNSAVE"] = "cast_unsave";
     ActivityType["CAST_BLACKLIST"] = "cast_blacklist";
     ActivityType["CAST_REPORT"] = "cast_report";
+    ActivityType["CAST_GIFT"] = "cast_gift";
     // Podcasts
     ActivityType["PODCAST_ALBUM_CREATE"] = "podcast_album_create";
     ActivityType["PODCAST_UPLOAD"] = "podcast_upload";

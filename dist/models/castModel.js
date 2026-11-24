@@ -49,6 +49,7 @@ const CastSchema = new mongoose_1.Schema({
     no_replies: { type: Number, default: 0 },
     no_recasts: { type: Number, default: 0 },
     no_listeners: { type: Number, default: 0 },
+    gift_points: { type: Number, default: 0 },
     filter: {
         name: { type: String, default: "normal" },
         gain: { type: Number, default: 2 },
