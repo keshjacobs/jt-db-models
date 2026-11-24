@@ -38,13 +38,15 @@ const PointTransferSchema = new mongoose_1.Schema({
     sender: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users", required: true },
     recipient: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users", required: true },
     amount: { type: Number, required: true, min: 1 },
-    chatRoom: { type: mongoose_1.Schema.Types.ObjectId, ref: "Chats", required: true },
+    chatRoom: { type: mongoose_1.Schema.Types.ObjectId, ref: "Chats" },
     message: { type: mongoose_1.Schema.Types.ObjectId, ref: "Messages" },
+    cast: { type: mongoose_1.Schema.Types.ObjectId, ref: "Casts" },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });
 PointTransferSchema.set("toJSON", { virtuals: true });
 PointTransferSchema.index({ sender: 1, createdAt: -1 });
 PointTransferSchema.index({ recipient: 1, createdAt: -1 });
+PointTransferSchema.index({ cast: 1, createdAt: -1 }, { sparse: true });
 const PointTransfer = mongoose_1.default.model("PointTransfers", PointTransferSchema);
 exports.default = PointTransfer;
