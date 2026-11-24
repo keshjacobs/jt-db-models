@@ -12,6 +12,8 @@ var NotificationEvents;
     NotificationEvents["chat"] = "chat";
     NotificationEvents["repliesMention"] = "replies_mention";
     NotificationEvents["repliesLike"] = "replies_like";
+    // Someone gifted wallet points to the user's cast.
+    NotificationEvents["gift"] = "gift";
     // Sent by the admin console: warnings and takedowns.
     NotificationEvents["moderation"] = "moderation";
 })(NotificationEvents || (exports.NotificationEvents = NotificationEvents = {}));

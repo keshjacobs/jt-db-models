@@ -27,6 +27,7 @@ export enum ActivityType {
   CAST_UNSAVE = "cast_unsave",
   CAST_BLACKLIST = "cast_blacklist",
   CAST_REPORT = "cast_report",
+  CAST_GIFT = "cast_gift",
 
   // Podcasts
   PODCAST_ALBUM_CREATE = "podcast_album_create",

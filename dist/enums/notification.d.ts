@@ -8,5 +8,6 @@ export declare enum NotificationEvents {
     chat = "chat",
     repliesMention = "replies_mention",
     repliesLike = "replies_like",
+    gift = "gift",
     moderation = "moderation"
 }
